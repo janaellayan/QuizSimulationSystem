@@ -33,7 +33,7 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnStart = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
             this.comboChapters = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -91,19 +91,20 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Welcome! to the Quiz Simulation System";
             // 
-            // btnStart
+            // btnNext
             // 
-            this.btnStart.BackColor = System.Drawing.Color.White;
-            this.btnStart.FlatAppearance.BorderSize = 0;
-            this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStart.ForeColor = System.Drawing.Color.Black;
-            this.btnStart.Location = new System.Drawing.Point(329, 433);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(93, 35);
-            this.btnStart.TabIndex = 5;
-            this.btnStart.Text = "Start Quiz";
-            this.btnStart.UseVisualStyleBackColor = false;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            this.btnNext.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnNext.FlatAppearance.BorderSize = 0;
+            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNext.ForeColor = System.Drawing.Color.White;
+            this.btnNext.Location = new System.Drawing.Point(325, 405);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(170, 72);
+            this.btnNext.TabIndex = 5;
+            this.btnNext.Text = "Next";
+            this.btnNext.UseVisualStyleBackColor = false;
+            this.btnNext.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // comboChapters
             // 
@@ -132,14 +133,14 @@
             this.ClientSize = new System.Drawing.Size(871, 571);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.comboChapters);
-            this.Controls.Add(this.btnStart);
+            this.Controls.Add(this.btnNext);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
-            this.Text = "Quiz Simulation System";
+            this.Text = "Quiz Simulation System(User Info)";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -153,7 +154,7 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.ComboBox comboChapters;
         private System.Windows.Forms.Label label4;
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D; // for GraphicsPath
+using System.Drawing.Drawing2D; 
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,58 +11,38 @@ using System.Windows.Forms;
 
 namespace Form1
 {
-    public partial class Form1 : Form
+    public partial class Form2 : Form
     {
+
         // variable to track button pressed state
         private bool btnPressed = false;
 
-        public Form1()
+        public Form2()
         {
             InitializeComponent();
 
             // Button basic design
-            btnNext.BackColor = Color.Transparent;
-            btnNext.ForeColor = Color.White;
-            btnNext.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-            btnNext.Width = 130;
-            btnNext.Height = 50;
+            btnStartQuiz.BackColor = Color.Transparent;
+            btnStartQuiz.ForeColor = Color.White;
+            btnStartQuiz.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnStartQuiz.Width = 130;
+            btnStartQuiz.Height = 50;
 
             // Custom paint event for rounded + gradient button
-            btnNext.Paint += btnStart_Paint;
+            btnStartQuiz.Paint += btnNext_Paint;
 
             // Mouse enter / leave effect (hover)
-            btnNext.MouseEnter += (s, e) => btnNext.BackColor = Color.SteelBlue;
-            btnNext.MouseLeave += (s, e) => btnNext.BackColor = Color.DodgerBlue;
+            btnStartQuiz.MouseEnter += (s, e) => btnStartQuiz.BackColor = Color.SteelBlue;
+            btnStartQuiz.MouseLeave += (s, e) => btnStartQuiz.BackColor = Color.DodgerBlue;
 
             // Mouse down / up to show pressed effect
-            btnNext.MouseDown += (s, e) => { btnPressed = true; btnNext.Invalidate(); };
-            btnNext.MouseUp += (s, e) => { btnPressed = false; btnNext.Invalidate(); };
+            btnStartQuiz.MouseDown += (s, e) => { btnPressed = true; btnStartQuiz.Invalidate(); };
+            btnStartQuiz.MouseUp += (s, e) => { btnPressed = false; btnStartQuiz.Invalidate(); };
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form2_Load(object sender, EventArgs e)
         {
-            // Clear items first
-            comboChapters.Items.Clear();
-
-            // Add chapters to combo box
-            comboChapters.Items.Add("Chapter 1");
-            comboChapters.Items.Add("Chapter 2");
-            comboChapters.Items.Add("Chapter 3");
-            comboChapters.Items.Add("Chapter 4");
-            comboChapters.Items.Add("Chapter 5");
-            comboChapters.Items.Add("Chapter 6");
-            comboChapters.Items.Add("Chapter 7");
-
-            // Select first chapter by default
-            comboChapters.SelectedIndex = 0;
-        }
-
-        // Button click event to open second form
-        private void btnStart_Click(object sender, EventArgs e)
-        {
-            Form2 form2 = new Form2();
-            form2.Show();
-            this.Hide();
+            
         }
 
         // Function to make rounded rectangle
@@ -82,7 +62,7 @@ namespace Form1
         }
 
         // Custom drawing for the button
-        private void btnStart_Paint(object sender, PaintEventArgs e)
+        private void btnNext_Paint(object sender, PaintEventArgs e)
         {
             Button btn = sender as Button;
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
@@ -121,16 +101,6 @@ namespace Form1
                 Color.White,
                 TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
             );
-        }
-
-        private void txtID_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }
