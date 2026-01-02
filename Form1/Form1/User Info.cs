@@ -53,8 +53,8 @@ namespace Form1
             comboChapters.Items.Add("Chapter 6");
             comboChapters.Items.Add("Chapter 7");
 
-            // Select first chapter by default
-            comboChapters.SelectedIndex = 0;
+            // Select nothing by default
+            comboChapters.SelectedIndex = -1;
         }
 
         // Button click event to open second form
@@ -128,12 +128,40 @@ namespace Form1
 
         private void txtID_TextChanged(object sender, EventArgs e)
         {
-
+            String id = txtID.Text;
+            try
+            {
+                // checks for whitespaces, or any non-number characters
+                if (String.IsNullOrEmpty(id) || !int.TryParse(id, out int number))
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ID number cannot be empty or anything other than numbers. ", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {                  
+            String name = txtName.Text;
+
+            try {
+                // checks for whitespaces, or any non-letter characters, while allowing spaces between names
+                if (String.IsNullOrEmpty(name) || !name.Any(char.IsLetter)|| !name.All(c => char.IsLetter(c) || c == ' '))
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception) { 
+                MessageBox.Show("Name cannot be empty or anything other than letters. ", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
