@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D; 
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,13 +13,15 @@ namespace Form1
 {
     public partial class Form2 : Form
     {
-
         // variable to track button pressed state
         private bool btnPressed = false;
+        string selectedChapter;
 
-        public Form2()
+        public Form2(string chapter)
         {
             InitializeComponent();
+            selectedChapter = chapter;
+            lblSelectedChapter.Text =  selectedChapter;
 
             // Button basic design
             btnStartQuiz.BackColor = Color.Transparent;
@@ -42,10 +44,17 @@ namespace Form1
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            
+
         }
 
-        // Function to make rounded rectangle
+        private void btnStartQuiz_Click(object sender, EventArgs e)
+        {
+       
+            Quiz_Form quizForm = new Quiz_Form(selectedChapter);
+            quizForm.Show();
+            this.Hide();
+        }
+
         private GraphicsPath GetRoundedPath(Rectangle rect, int radius)
         {
             GraphicsPath path = new GraphicsPath();
@@ -61,7 +70,6 @@ namespace Form1
             return path;
         }
 
-        // Custom drawing for the button
         private void btnNext_Paint(object sender, PaintEventArgs e)
         {
             Button btn = sender as Button;

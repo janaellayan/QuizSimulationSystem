@@ -60,7 +60,10 @@ namespace Form1
         // Button click event to open second form
         private void btnStart_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2();
+            string selectedChapter = comboChapters.SelectedItem.ToString();
+
+            // open only Form2 and pass selected chapter
+            Form2 form2 = new Form2(selectedChapter);
             form2.Show();
             this.Hide();
         }
@@ -125,12 +128,12 @@ namespace Form1
 
         private void txtID_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-            
+
         }
     }
 }
