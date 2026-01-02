@@ -128,12 +128,27 @@ namespace Form1
 
         private void txtID_TextChanged(object sender, EventArgs e)
         {
-
+            String id = txtID.Text;
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {   
+            try {
+                String name = txtName.Text;
+                // checks for whitespaces, or any non-letter characters, while allowing spaces between names
+                if (String.IsNullOrEmpty(name) || !name.Any(char.IsLetter)|| !name.All(c => char.IsLetter(c) || c == ' '))
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception) { 
+                MessageBox.Show("Name cannot be empty or anything other than letters. ", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
