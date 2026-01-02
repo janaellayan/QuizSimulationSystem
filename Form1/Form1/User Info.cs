@@ -129,6 +129,18 @@ namespace Form1
         private void txtID_TextChanged(object sender, EventArgs e)
         {
             String id = txtID.Text;
+            try
+            {
+                // checks for whitespaces, or any non-number characters
+                if (String.IsNullOrEmpty(id) || !int.TryParse(id, out int number))
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ID number cannot be empty or anything other than numbers. ", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -137,9 +149,10 @@ namespace Form1
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
-        {   
+        {                  
+            String name = txtName.Text;
+
             try {
-                String name = txtName.Text;
                 // checks for whitespaces, or any non-letter characters, while allowing spaces between names
                 if (String.IsNullOrEmpty(name) || !name.Any(char.IsLetter)|| !name.All(c => char.IsLetter(c) || c == ' '))
                 {
