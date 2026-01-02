@@ -53,8 +53,8 @@ namespace Form1
             comboChapters.Items.Add("Chapter 6");
             comboChapters.Items.Add("Chapter 7");
 
-            // Select first chapter by default
-            comboChapters.SelectedIndex = 0;
+            // Select nothing by default
+            comboChapters.SelectedIndex = -1;
         }
 
         // Button click event to open second form
