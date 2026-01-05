@@ -30,14 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Quiz_Form));
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblTimer = new System.Windows.Forms.Label();
             this.pnlQuestion = new System.Windows.Forms.Panel();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.lblChapter = new System.Windows.Forms.Label();
             this.btnFinish = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.quizTimer = new System.Windows.Forms.Timer(this.components);
             this.pnlQuestion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -64,6 +62,7 @@
             this.pnlQuestion.Name = "pnlQuestion";
             this.pnlQuestion.Size = new System.Drawing.Size(831, 304);
             this.pnlQuestion.TabIndex = 2;
+            this.pnlQuestion.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlQuestion_Paint);
             // 
             // vScrollBar1
             // 
@@ -110,10 +109,6 @@
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
-            // timer2
-            // 
-            this.timer2.Interval = 1000;
-            // 
             // quizTimer
             // 
             this.quizTimer.Interval = 1000;
@@ -139,15 +134,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblTimer;
         private System.Windows.Forms.Panel pnlQuestion;
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.Label lblChapter;
         private System.Windows.Forms.Button btnFinish;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Timer quizTimer;
     }
 }
