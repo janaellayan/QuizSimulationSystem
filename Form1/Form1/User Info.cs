@@ -62,8 +62,12 @@ namespace Form1
         {
             string selectedChapter = comboChapters.SelectedItem.ToString();
 
+            string studentName =txtName.Text;
+            string studentID = txtID.Text;
+
+
             // open only Form2 and pass selected chapter
-            Form2 form2 = new Form2(selectedChapter);
+            Form2 form2 = new Form2(selectedChapter,studentName,studentID);
             form2.Show();
             this.Hide();
         }
