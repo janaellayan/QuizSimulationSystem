@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Form1.Models;
+
 
 namespace Form1
 {
@@ -23,6 +25,11 @@ namespace Form1
         DateTime quizStartTime;//to calculate time taken 
 
         private bool btnPressed = false;
+
+        private List<Question> questions;
+        private int currentQuestionIndex = 0;
+        private List<int> userSelections = new List<int>();  //user choices to track the score 
+        private int score = 0; // total as we run the code
 
         public Quiz_Form(string chapterName,string studentName,string studentID)
         {
@@ -116,9 +123,47 @@ namespace Form1
 
         private void Quiz_Form_Load(object sender, EventArgs e)
         {
-            quizStartTime = DateTime.Now; //save start time
+            quizStartTime = QuizGenerator.QuizState.StartTime; // start time
             remainingSeconds = 300;
+            questions = QuizGenerator.QuizState.SelectedQuestions;
+            currentQuestionIndex = 0;
+            ShowCurrentQuestion();
         }
+
+
+        private void ShowCurrentQuestion()
+        {
+            // if we still didnt load questions or if we are done with five questions
+            if (questions == null || currentQuestionIndex >= questions.Count) return;
+            Question q = questions[currentQuestionIndex];
+
+            lblQnum.Text = $"Question {currentQuestionIndex + 1}/5"; // +1 because index starts from 0
+            lblQtext.Text = q.Text;  // maiin question text
+
+            //there are four radio buttons always
+            // if the question is true/false we only use two and the other two are hidden 
+            if (q.Type == QuestionType.TrueFalse)
+            {
+                radioA.Text = q.Options[0];  // True
+                radioB.Text = q.Options[1];  // False
+                radioC.Visible = false;
+                radioD.Visible = false;
+                radioA.Visible = radioB.Visible = true;
+            }
+            else
+            {
+                radioA.Text = q.Options[0];
+                radioB.Text = q.Options[1];
+                radioC.Text = q.Options[2];
+                radioD.Text = q.Options[3];
+                radioA.Visible = radioB.Visible = radioC.Visible = radioD.Visible = true;
+            }
+
+            // clear previous selections
+            radioA.Checked = radioB.Checked = radioC.Checked = radioD.Checked = false;
+        }
+
+
 
         private void quizTimer_Tick(object sender, EventArgs e)
         {

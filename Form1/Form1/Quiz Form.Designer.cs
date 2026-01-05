@@ -37,6 +37,12 @@
             this.btnFinish = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.quizTimer = new System.Windows.Forms.Timer(this.components);
+            this.lblQnum = new System.Windows.Forms.Label();
+            this.lblQtext = new System.Windows.Forms.Label();
+            this.radioA = new System.Windows.Forms.RadioButton();
+            this.radioB = new System.Windows.Forms.RadioButton();
+            this.radioC = new System.Windows.Forms.RadioButton();
+            this.radioD = new System.Windows.Forms.RadioButton();
             this.pnlQuestion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -56,6 +62,12 @@
             // 
             this.pnlQuestion.AutoScroll = true;
             this.pnlQuestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.pnlQuestion.Controls.Add(this.radioD);
+            this.pnlQuestion.Controls.Add(this.radioC);
+            this.pnlQuestion.Controls.Add(this.radioB);
+            this.pnlQuestion.Controls.Add(this.radioA);
+            this.pnlQuestion.Controls.Add(this.lblQtext);
+            this.pnlQuestion.Controls.Add(this.lblQnum);
             this.pnlQuestion.Controls.Add(this.vScrollBar1);
             this.pnlQuestion.Location = new System.Drawing.Point(30, 83);
             this.pnlQuestion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -113,6 +125,68 @@
             // 
             this.quizTimer.Interval = 1000;
             // 
+            // lblQnum
+            // 
+            this.lblQnum.AutoSize = true;
+            this.lblQnum.Location = new System.Drawing.Point(31, 17);
+            this.lblQnum.Name = "lblQnum";
+            this.lblQnum.Size = new System.Drawing.Size(52, 16);
+            this.lblQnum.TabIndex = 1;
+            this.lblQnum.Text = "number";
+            // 
+            // lblQtext
+            // 
+            this.lblQtext.AutoSize = true;
+            this.lblQtext.Location = new System.Drawing.Point(31, 48);
+            this.lblQtext.Name = "lblQtext";
+            this.lblQtext.Size = new System.Drawing.Size(81, 16);
+            this.lblQtext.TabIndex = 2;
+            this.lblQtext.Text = "question text";
+            // 
+            // radioA
+            // 
+            this.radioA.AutoSize = true;
+            this.radioA.Location = new System.Drawing.Point(42, 99);
+            this.radioA.Name = "radioA";
+            this.radioA.Size = new System.Drawing.Size(79, 20);
+            this.radioA.TabIndex = 3;
+            this.radioA.TabStop = true;
+            this.radioA.Text = "A/TRUE";
+            this.radioA.UseVisualStyleBackColor = true;
+            // 
+            // radioB
+            // 
+            this.radioB.AutoSize = true;
+            this.radioB.Location = new System.Drawing.Point(42, 138);
+            this.radioB.Name = "radioB";
+            this.radioB.Size = new System.Drawing.Size(75, 20);
+            this.radioB.TabIndex = 4;
+            this.radioB.TabStop = true;
+            this.radioB.Text = "B/False";
+            this.radioB.UseVisualStyleBackColor = true;
+            // 
+            // radioC
+            // 
+            this.radioC.AutoSize = true;
+            this.radioC.Location = new System.Drawing.Point(42, 175);
+            this.radioC.Name = "radioC";
+            this.radioC.Size = new System.Drawing.Size(37, 20);
+            this.radioC.TabIndex = 5;
+            this.radioC.TabStop = true;
+            this.radioC.Text = "C";
+            this.radioC.UseVisualStyleBackColor = true;
+            // 
+            // radioD
+            // 
+            this.radioD.AutoSize = true;
+            this.radioD.Location = new System.Drawing.Point(42, 214);
+            this.radioD.Name = "radioD";
+            this.radioD.Size = new System.Drawing.Size(38, 20);
+            this.radioD.TabIndex = 6;
+            this.radioD.TabStop = true;
+            this.radioD.Text = "D";
+            this.radioD.UseVisualStyleBackColor = true;
+            // 
             // Quiz_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -128,6 +202,7 @@
             this.Text = "Quiz";
             this.Load += new System.EventHandler(this.Quiz_Form_Load);
             this.pnlQuestion.ResumeLayout(false);
+            this.pnlQuestion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -141,5 +216,11 @@
         private System.Windows.Forms.Button btnFinish;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer quizTimer;
+        private System.Windows.Forms.Label lblQtext;
+        private System.Windows.Forms.Label lblQnum;
+        private System.Windows.Forms.RadioButton radioD;
+        private System.Windows.Forms.RadioButton radioC;
+        private System.Windows.Forms.RadioButton radioB;
+        private System.Windows.Forms.RadioButton radioA;
     }
 }
