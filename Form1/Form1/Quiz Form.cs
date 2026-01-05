@@ -131,6 +131,8 @@ namespace Form1
         }
 
 
+
+        //questions display method
         private void ShowCurrentQuestion()
         {
             // if we still didnt load questions or if we are done with five questions
@@ -203,6 +205,14 @@ namespace Form1
                 timeTaken.Seconds.ToString("D2");
 
             int score = 0;
+            for (int i = 0; i < questions.Count; i++)
+            {
+                if (i < userSelections.Count && userSelections[i] == questions[i].CorrectIndex && userSelections[i]!=-1)
+                {
+                    score++;
+                }
+            }
+
             saveResultToCSV(score, finalTime);
             Result_Form resultForm = new Result_Form(score, finalTime);
             resultForm.Show();
@@ -265,6 +275,41 @@ namespace Form1
         private void pnlQuestion_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            // answer index
+            // here we record the answer before moving to next question
+            int selected = -1;
+            if (radioA.Checked)
+                selected = 0;
+            else if (radioB.Checked)
+                selected = 1;
+            else if (radioC.Checked)
+                selected = 2;
+            else if (radioD.Checked)
+                selected = 3;
+            // now this works 10/10
+            // adds the selected answer index to the list
+            userSelections.Add(selected);
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < questions.Count)
+            {
+                ShowCurrentQuestion();
+            }
+            else
+                FinishQuiz();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            if (currentQuestionIndex > 0)
+            {
+                currentQuestionIndex--;
+                ShowCurrentQuestion();
+            }
         }
     }
 }
