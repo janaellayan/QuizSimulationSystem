@@ -15,9 +15,11 @@ namespace Form1.Models
     // to classify the questions in our lists 
     public class Question
     {
-        public string Text { get; set; }
-        public QuestionType Type { get; set; }
-        public string[] Options { get; set; }
-        public int CorrectIndex { get; set; }
+        public string Text { get; set; } //question text
+        public QuestionType Type { get; set; }  // tf or mcq
+        public string[] Options { get; set; }  // possible answers
+        public int CorrectIndex { get; set; }  // index of the correct answer in Options array
+
+        //Auto-property in get; set; cuz public field with private backing storage.
     }
 }
