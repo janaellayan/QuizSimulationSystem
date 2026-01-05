@@ -8,23 +8,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Form1
 {
     public partial class Quiz_Form : Form
     {
+        string studentID;
+        string studentName;
+        string chapterName;
 
+        int totalQuestions = 5;
         int remainingSeconds = 300; // time for quiz (5 minutes = 300 seconds)
         DateTime quizStartTime;//to calculate time taken 
 
         private bool btnPressed = false;
 
-        public Quiz_Form(string chapterName)
+        public Quiz_Form(string chapterName,string studentName,string studentID)
         {
             InitializeComponent();
 
+            this.chapterName = chapterName;
+            this.studentName = studentName;
+            this.studentID = studentID;
+
             //show selected chapter number
             lblChapter.Text = chapterName;
+
+            lblTimer.Text = "05:00"; //show initial time
+
+            quizTimer.Interval = 1000;
+            this.quizTimer.Tick += new System.EventHandler(this.quizTimer_Tick);
+            quizTimer.Start();//start timer
 
             //finish button design
             btnFinish.BackColor = Color.Transparent;
@@ -43,13 +58,66 @@ namespace Form1
 
         }
 
+        int CalculateGrade(int score)
+        {
+            double percent = (double)score / totalQuestions * 100;
+            if (percent >= 90) return 5;
+            if (percent >= 80) return 4;
+            if (percent >= 70) return 3;
+            if (percent >= 60) return 2;
+            if (percent >= 50) return 1;
+
+            return 0;
+        }
+
+        int GetAttemptNumber()
+        {
+            string filepath = "QuizResults.csv";
+             if(!File.Exists(filepath)) return 1;
+
+            int attempts = 0;
+            string[] lines =File.ReadAllLines(filepath);
+
+            foreach (string line in lines)
+            {
+                if(line.StartsWith(studentID+",") && line.Contains("," + chapterName + ","))
+                {
+                    attempts++;
+                }
+            }
+            return attempts +1;
+        }
+
+        void saveResultToCSV(int score,string timeTaken)
+        {
+            string filePath = "QuizResults.csv";
+
+            if (!File.Exists(filePath))
+            {
+                File.WriteAllText(filePath, "StudentID,StudentName,Chapter,Score," +
+                    "TotalQuestions,Grade,TimeTaken,Attempt,DateTime\n");
+            }
+            int attempt=GetAttemptNumber();
+            int grade = CalculateGrade(score);
+
+            string line=
+                studentID +","+
+                studentName +","+
+                chapterName +","+
+                score +","+
+                totalQuestions +","+
+                grade +"/5,"+
+                timeTaken +","+
+                attempt +","+
+                DateTime.Now.ToString("yyyy-MM-dd HH:mm") +"\n";
+
+            File.AppendAllText(filePath, line);
+        }
+
         private void Quiz_Form_Load(object sender, EventArgs e)
         {
             quizStartTime = DateTime.Now; //save start time
             remainingSeconds = 300;
-            lblTimer.Text = "05:00"; //show initial time
-            quizTimer.Interval = 1000; 
-            quizTimer.Start();//start timer
         }
 
         private void quizTimer_Tick(object sender, EventArgs e)
@@ -87,7 +155,8 @@ namespace Form1
                 timeTaken.Minutes.ToString("D2") + ":" +
                 timeTaken.Seconds.ToString("D2");
 
-            int score = 0; 
+            int score = 0;
+            saveResultToCSV(score, finalTime);
             Result_Form resultForm = new Result_Form(score, finalTime);
             resultForm.Show();
             this.Hide();
