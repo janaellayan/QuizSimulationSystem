@@ -16,11 +16,15 @@ namespace Form1
         // variable to track button pressed state
         private bool btnPressed = false;
         string selectedChapter;
+        string studentName;
+        string studentID;
 
-        public Form2(string chapter)
+        public Form2(string chapter,string studentName,string studentID)
         {
             InitializeComponent();
             selectedChapter = chapter;
+            this.studentName =studentName;
+            this.studentID =studentID;
             lblSelectedChapter.Text =  selectedChapter;
 
             // Button basic design
@@ -49,8 +53,7 @@ namespace Form1
 
         private void btnStartQuiz_Click(object sender, EventArgs e)
         {
-       
-            Quiz_Form quizForm = new Quiz_Form(selectedChapter);
+            Quiz_Form quizForm = new Quiz_Form(selectedChapter,studentName,studentID);
             quizForm.Show();
             this.Hide();
         }
@@ -109,6 +112,11 @@ namespace Form1
                 Color.White,
                 TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
             );
+        }
+
+        private void Form2_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
