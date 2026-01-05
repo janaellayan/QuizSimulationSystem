@@ -107,13 +107,27 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Questions\chapter1.json" />
-    <None Include="Questions\chapter2.json" />
-    <None Include="Questions\chapter3.json" />
-    <None Include="Questions\chapter4.json" />
-    <None Include="Questions\chapter5.json" />
-    <None Include="Questions\chapter6.json" />
-    <None Include="Questions\chapter7.json" />
+    <None Include="Questions\chapter1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Questions\chapter2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Questions\chapter3.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Questions\chapter4.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Questions\chapter5.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Questions\chapter6.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Questions\chapter7.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
