@@ -47,36 +47,38 @@
             // 
             this.lblTimer.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblTimer.Location = new System.Drawing.Point(821, 27);
+            this.lblTimer.Location = new System.Drawing.Point(730, 22);
             this.lblTimer.Name = "lblTimer";
-            this.lblTimer.Size = new System.Drawing.Size(148, 40);
+            this.lblTimer.Size = new System.Drawing.Size(132, 32);
             this.lblTimer.TabIndex = 0;
             this.lblTimer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTimer.Click += new System.EventHandler(this.lblTimer_Click);
             // 
             // pnlQuestion
             // 
             this.pnlQuestion.AutoScroll = true;
             this.pnlQuestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
             this.pnlQuestion.Controls.Add(this.vScrollBar1);
-            this.pnlQuestion.Location = new System.Drawing.Point(34, 104);
+            this.pnlQuestion.Location = new System.Drawing.Point(30, 83);
+            this.pnlQuestion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlQuestion.Name = "pnlQuestion";
-            this.pnlQuestion.Size = new System.Drawing.Size(935, 380);
+            this.pnlQuestion.Size = new System.Drawing.Size(831, 304);
             this.pnlQuestion.TabIndex = 2;
             // 
             // vScrollBar1
             // 
-            this.vScrollBar1.Location = new System.Drawing.Point(21, 21);
+            this.vScrollBar1.Location = new System.Drawing.Point(19, 17);
             this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(20, 345);
+            this.vScrollBar1.Size = new System.Drawing.Size(20, 276);
             this.vScrollBar1.TabIndex = 0;
             // 
             // lblChapter
             // 
             this.lblChapter.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblChapter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblChapter.Location = new System.Drawing.Point(50, 27);
+            this.lblChapter.Location = new System.Drawing.Point(44, 22);
             this.lblChapter.Name = "lblChapter";
-            this.lblChapter.Size = new System.Drawing.Size(144, 40);
+            this.lblChapter.Size = new System.Drawing.Size(128, 32);
             this.lblChapter.TabIndex = 3;
             this.lblChapter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -87,9 +89,10 @@
             this.btnFinish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFinish.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFinish.ForeColor = System.Drawing.Color.White;
-            this.btnFinish.Location = new System.Drawing.Point(799, 524);
+            this.btnFinish.Location = new System.Drawing.Point(710, 419);
+            this.btnFinish.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFinish.Name = "btnFinish";
-            this.btnFinish.Size = new System.Drawing.Size(170, 72);
+            this.btnFinish.Size = new System.Drawing.Size(151, 58);
             this.btnFinish.TabIndex = 6;
             this.btnFinish.Text = "Finish";
             this.btnFinish.UseVisualStyleBackColor = false;
@@ -99,9 +102,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(768, 27);
+            this.pictureBox1.Location = new System.Drawing.Point(683, 22);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(47, 40);
+            this.pictureBox1.Size = new System.Drawing.Size(42, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
@@ -116,14 +120,15 @@
             // 
             // Quiz_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1016, 642);
+            this.ClientSize = new System.Drawing.Size(903, 514);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnFinish);
             this.Controls.Add(this.lblChapter);
             this.Controls.Add(this.pnlQuestion);
             this.Controls.Add(this.lblTimer);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Quiz_Form";
             this.Text = "Quiz";
             this.Load += new System.EventHandler(this.Quiz_Form_Load);

@@ -210,5 +210,9 @@ namespace Form1
             FinishQuiz(); 
         }
 
+        private void lblTimer_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
