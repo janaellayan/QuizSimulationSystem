@@ -1,0 +1,97 @@
+[
+  {
+    "Text": "1. What type of expression is required in an if statement?",
+    "Type": "MultipleChoice",
+    "Options": [ "Numeric", "String", "Boolean", "Assignment" ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "2. Nested if statements allow testing more than one condition.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "3. Which operator reverses the value of a Boolean expression?",
+    "Type": "MultipleChoice",
+    "Options": [ "&&", "||", "==", "!" ],
+    "CorrectIndex": 3
+  },
+  {
+    "Text": "4. What is the main difference between RadioButton and CheckBox controls?",
+    "Type": "MultipleChoice",
+    "Options": [
+      "RadioButtons allow multiple selections",
+      "CheckBoxes allow multiple selections, RadioButtons allow only one per group",
+      "RadioButtons cannot be grouped",
+      "CheckBoxes cannot be clicked"
+    ],
+    "CorrectIndex": 1
+  },
+  {
+    "Text": "5. The TryParse method helps prevent data conversion exceptions.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "6. Which structure allows a program to choose between alternatives?",
+    "Type": "MultipleChoice",
+    "Options": [ "Sequence", "Loop", "Decision", "Method" ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "7. Relational operators compare two values.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "8. Which operator checks for equality?",
+    "Type": "MultipleChoice",
+    "Options": [ "=", "!=", "==", "<=" ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "9. Which are logical operators?",
+    "Type": "MultipleChoice",
+    "Options": [ "&&, ||, !", "=", "+", "%" ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "10. The else block executes only when the if condition is false.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "11. Which control allows only one option to be selected at a time?",
+    "Type": "MultipleChoice",
+    "Options": [ "CheckBox", "RadioButton", "ListBox", "Label" ],
+    "CorrectIndex": 1
+  },
+  {
+    "Text": "12. What method helps avoid conversion errors?",
+    "Type": "MultipleChoice",
+    "Options": [ "Parse", "Convert", "TryParse", "Cast" ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "13. A switch statement is used to test multiple conditions.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "14. Which event occurs when a CheckBox is checked or unchecked?",
+    "Type": "MultipleChoice",
+    "Options": [ "Click", "Load", "CheckedChanged", "Change" ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "15. Strings can be compared using relational operators.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 1
+  }
+]

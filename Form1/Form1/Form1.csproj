@@ -103,12 +103,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Questions\chapter1.json" />
+    <None Include="Questions\chapter2.json" />
+    <None Include="Questions\chapter3.json" />
+    <None Include="Questions\chapter4.json" />
+    <None Include="Questions\chapter5.json" />
+    <None Include="Questions\chapter6.json" />
+    <None Include="Questions\chapter7.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Questions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

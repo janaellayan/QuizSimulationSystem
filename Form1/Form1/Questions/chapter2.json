@@ -1,0 +1,102 @@
+[
+  {
+    "Text": "1. What is the default name of a new form in Visual C#?",
+    "Type": "MultipleChoice",
+    "Options": [ "MainForm", "MyForm", "Form1", "DefaultForm" ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "2. The Properties window is used to change the appearance and behavior of controls.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "3. Which property determines the text shown in a form’s title bar?",
+    "Type": "MultipleChoice",
+    "Options": [ "Name", "Font", "Text", "BorderStyle" ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "4. Which are valid rules for naming controls?",
+    "Type": "MultipleChoice",
+    "Options": [
+      "Must start with a letter or underscore, can include numbers, can use underscores",
+      "Can contain spaces",
+      "Must start with a number",
+      "Can use symbols"
+    ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "5. The MessageBox.Show method is used to display output in a dialog box.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "6. Which window displays all files and resources in a project?",
+    "Type": "MultipleChoice",
+    "Options": [ "Toolbox", "Properties", "Solution Explorer", "Output" ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "7. A form acts as a container for controls in a GUI application.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "8. Which control is mainly used to trigger actions when clicked?",
+    "Type": "MultipleChoice",
+    "Options": [ "Label", "Button", "PictureBox", "Panel" ],
+    "CorrectIndex": 1
+  },
+  {
+    "Text": "9. Which actions can be done using the Properties window?",
+    "Type": "MultipleChoice",
+    "Options": [
+      "Change control text, color, and font style",
+      "Write C# logic",
+      "Compile code",
+      "Debug application"
+    ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "10. The Name property is what the user sees on the form.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 1
+  },
+  {
+    "Text": "11. What type of application uses a console window instead of a GUI?",
+    "Type": "MultipleChoice",
+    "Options": [ "Windows Forms", "Console Application", "Web Application", "Mobile Application" ],
+    "CorrectIndex": 1
+  },
+  {
+    "Text": "12. Which event occurs when a button is clicked?",
+    "Type": "MultipleChoice",
+    "Options": [ "Load", "Click", "Change", "Checked" ],
+    "CorrectIndex": 1
+  },
+  {
+    "Text": "13. IntelliSense helps programmers by suggesting code while typing.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "14. Which control is used to display images?",
+    "Type": "MultipleChoice",
+    "Options": [ "Label", "Button", "PictureBox", "TextBox" ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "15. Comments in C# affect how the program runs.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 1
+  }
+]
