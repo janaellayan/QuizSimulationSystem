@@ -163,7 +163,9 @@ namespace Form1
             radioA.Checked = radioB.Checked = radioC.Checked = radioD.Checked = false;
         }
 
-
+        // the questionsdisplay one at a time, so that we deal with 4 radio buttons only per question
+        // 4 buttons * five questions = 20 buttons total
+        // messy, so we do it this way
 
         private void quizTimer_Tick(object sender, EventArgs e)
         {

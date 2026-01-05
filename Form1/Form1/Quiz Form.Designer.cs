@@ -43,6 +43,8 @@
             this.radioB = new System.Windows.Forms.RadioButton();
             this.radioC = new System.Windows.Forms.RadioButton();
             this.radioD = new System.Windows.Forms.RadioButton();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.pnlQuestion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -187,11 +189,31 @@
             this.radioD.Text = "D";
             this.radioD.UseVisualStyleBackColor = true;
             // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(462, 435);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(75, 23);
+            this.btnNext.TabIndex = 8;
+            this.btnNext.Text = "Next";
+            this.btnNext.UseVisualStyleBackColor = true;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(223, 438);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.TabIndex = 9;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            // 
             // Quiz_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(903, 514);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.btnNext);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnFinish);
             this.Controls.Add(this.lblChapter);
@@ -222,5 +244,7 @@
         private System.Windows.Forms.RadioButton radioC;
         private System.Windows.Forms.RadioButton radioB;
         private System.Windows.Forms.RadioButton radioA;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Button btnBack;
     }
 }
