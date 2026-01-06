@@ -120,5 +120,17 @@ namespace Form1
                 TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
             );
         }
+
+        private void linkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try { 
+                this.linkLabel.LinkVisited = true;
+                System.Diagnostics.Process.Start("mailto:contactjanaellayan@gmail.com");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error opening link: " + ex.Message);
+            }
+        }
     }
 }
