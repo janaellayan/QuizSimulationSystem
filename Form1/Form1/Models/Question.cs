@@ -37,9 +37,9 @@ namespace Form1.Models
         // because we added readonly
         // im so happy with this part of code
 
-        public static List<Question> RandomizeQuestions(string chapterName, int count = 5)
+        public static List<Question> RandomizeQuestions(string chapterfile, int count = 5)
         {
-            string path = Path.Combine(Application.StartupPath, "Questions", $"{chapterName}.json");
+            string path = Path.Combine(Application.StartupPath, "Questions", $"{chapterfile}.json");
             List<Question> allQuestions = LoadQuestions(path);
 
             //until farfalla gets the rest of qs

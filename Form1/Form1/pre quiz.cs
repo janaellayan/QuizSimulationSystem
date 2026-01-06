@@ -60,7 +60,10 @@ namespace Form1
             try
             {
                 // loads 5 random questions and store in static state
-                QuizState.SelectedQuestions = Models.QuizGenerator.RandomizeQuestions(selectedChapter);
+                string chapterfile = selectedChapter.ToLower().Replace(" ", "");
+                // this is to ensure the chapter name matches the file naming 
+                // convention used in the Questions folder
+                QuizState.SelectedQuestions = QuizGenerator.RandomizeQuestions(chapterfile);
                 QuizState.StudentName = studentName;
                 QuizState.StudentID = studentID;
                 QuizState.StartTime = DateTime.Now;  // for timer
@@ -73,6 +76,8 @@ namespace Form1
             {
                 MessageBox.Show("Error loading quiz: " + ex.Message);
             }
+            MessageBox.Show($"Loading: {selectedChapter}");  // for debug
+
         }
 
         private GraphicsPath GetRoundedPath(Rectangle rect, int radius)
