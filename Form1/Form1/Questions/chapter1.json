@@ -1,6 +1,6 @@
 [
   {
-    "Text": "1. What is a program?",
+    "Text": "What is a program?",
     "Type": "MultipleChoice",
     "Options": [
       "A physical part of a computer",
@@ -11,13 +11,13 @@
     "CorrectIndex": 1
   },
   {
-    "Text": "2. Without software, a computer cannot perform any tasks.",
+    "Text": "Without software, a computer cannot perform any tasks.",
     "Type": "TrueFalse",
     "Options": [ "True", "False" ],
     "CorrectIndex": 0
   },
   {
-    "Text": "3. What is the cycle of processing?",
+    "Text": "What is the cycle of processing?",
     "Type": "MultipleChoice",
     "Options": [
       "fetch-decode-execute",
@@ -28,7 +28,7 @@
     "CorrectIndex": 0
   },
   {
-    "Text": "4. Which of the following are input devices?",
+    "Text": "Which of the following are input devices?",
     "Type": "MultipleChoice",
     "Options": [
       "Keyboard, Mouse, Microphone",
@@ -39,7 +39,7 @@
     "CorrectIndex": 0
   },
   {
-    "Text": "5. What is an algorithm?",
+    "Text": "What is an algorithm?",
     "Type": "MultipleChoice",
     "Options": [
       "A programming language",
@@ -50,7 +50,7 @@
     "CorrectIndex": 2
   },
   {
-    "Text": "6. What is the primary purpose of a computer?",
+    "Text": "What is the primary purpose of a computer?",
     "Type": "MultipleChoice",
     "Options": [
       "To store data only",
@@ -61,13 +61,13 @@
     "CorrectIndex": 1
   },
   {
-    "Text": "7. Hardware refers to the physical components of a computer system.",
+    "Text": "Hardware refers to the physical components of a computer system.",
     "Type": "TrueFalse",
     "Options": [ "True", "False" ],
     "CorrectIndex": 0
   },
   {
-    "Text": "8. Which of the following is an example of system software?",
+    "Text": "Which of the following is an example of system software?",
     "Type": "MultipleChoice",
     "Options": [
       "Microsoft Word",
@@ -78,7 +78,7 @@
     "CorrectIndex": 2
   },
   {
-    "Text": "9. Which tasks are performed by the CPU?",
+    "Text": "Which tasks are performed by the CPU?",
     "Type": "MultipleChoice",
     "Options": [
       "Performing calculations, Controlling program execution, Managing input and output",
@@ -89,13 +89,13 @@
     "CorrectIndex": 0
   },
   {
-    "Text": "10. Application software is designed to help users perform specific tasks.",
+    "Text": "Application software is designed to help users perform specific tasks.",
     "Type": "TrueFalse",
     "Options": [ "True", "False" ],
     "CorrectIndex": 0
   },
   {
-    "Text": "11. Which unit is responsible for performing arithmetic and logical operations?",
+    "Text": "Which unit is responsible for performing arithmetic and logical operations?",
     "Type": "MultipleChoice",
     "Options": [
       "Control Unit",
@@ -106,13 +106,13 @@
     "CorrectIndex": 2
   },
   {
-    "Text": "12. Flowcharts are used to visually represent the steps of an algorithm.",
+    "Text": "Flowcharts are used to visually represent the steps of an algorithm.",
     "Type": "TrueFalse",
     "Options": [ "True", "False" ],
     "CorrectIndex": 0
   },
   {
-    "Text": "13. Which of the following best describes pseudocode?",
+    "Text": "Which of the following best describes pseudocode?",
     "Type": "MultipleChoice",
     "Options": [
       "Code written in a programming language",
@@ -123,13 +123,13 @@
     "CorrectIndex": 2
   },
   {
-    "Text": "14. Programming languages are used to communicate instructions to a computer.",
+    "Text": "Programming languages are used to communicate instructions to a computer.",
     "Type": "TrueFalse",
     "Options": [ "True", "False" ],
     "CorrectIndex": 0
   },
   {
-    "Text": "15. Which best describes the difference between data and information?",
+    "Text": "Which best describes the difference between data and information?",
     "Type": "MultipleChoice",
     "Options": [
       "Data is processed information",

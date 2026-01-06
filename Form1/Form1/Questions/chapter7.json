@@ -1,6 +1,6 @@
 [
   {
-    "Text": "1. Why are arrays preferred over individual variables for large data sets?",
+    "Text": "Why are arrays preferred over individual variables for large data sets?",
     "Type": "MultipleChoice",
     "Options": [
       "They use less memory",
@@ -11,13 +11,13 @@
     "CorrectIndex": 2
   },
   {
-    "Text": "2. Array subscripts always start at 1.",
+    "Text": "Array subscripts always start at 1.",
     "Type": "TrueFalse",
     "Options": [ "True", "False" ],
     "CorrectIndex": 1
   },
   {
-    "Text": "3. Which operations can be done using arrays and files together?",
+    "Text": "Which operations can be done using arrays and files together?",
     "Type": "MultipleChoice",
     "Options": [
       "Writing to file, reading from file, displaying elements",
@@ -28,13 +28,13 @@
     "CorrectIndex": 0
   },
   {
-    "Text": "4. Lists can dynamically change size, unlike arrays.",
+    "Text": "Lists can dynamically change size, unlike arrays.",
     "Type": "TrueFalse",
     "Options": [ "True", "False" ],
     "CorrectIndex": 0
   },
   {
-    "Text": "5. How do Add, Insert, and Remove work in a List<string>?",
+    "Text": "How do Add, Insert, and Remove work in a List<string>?",
     "Type": "MultipleChoice",
     "Options": [
       "Add adds to end, Insert adds at index, Remove removes by value",
@@ -45,61 +45,61 @@
     "CorrectIndex": 0
   },
   {
-    "Text": "6. Which data structure stores multiple values of the same type?",
+    "Text": "Which data structure stores multiple values of the same type?",
     "Type": "MultipleChoice",
     "Options": [ "Variable", "Method", "Array", "Loop" ],
     "CorrectIndex": 2
   },
   {
-    "Text": "7. Array elements are stored in consecutive memory locations.",
+    "Text": "Array elements are stored in consecutive memory locations.",
     "Type": "TrueFalse",
     "Options": [ "True", "False" ],
     "CorrectIndex": 0
   },
   {
-    "Text": "8. What is the index of the last element in an array of size 10?",
+    "Text": "What is the index of the last element in an array of size 10?",
     "Type": "MultipleChoice",
     "Options": [ "10", "9", "1", "0" ],
     "CorrectIndex": 1
   },
   {
-    "Text": "9. Which are valid array operations?",
+    "Text": "Which are valid array operations?",
     "Type": "MultipleChoice",
     "Options": [ "Initialization, Traversing, Sorting", "Compiling", "Debugging", "Linking" ],
     "CorrectIndex": 0
   },
   {
-    "Text": "10. The Length property returns the size of an array.",
+    "Text": "The Length property returns the size of an array.",
     "Type": "TrueFalse",
     "Options": [ "True", "False" ],
     "CorrectIndex": 0
   },
   {
-    "Text": "11. Which loop is read-only when processing arrays?",
+    "Text": "Which loop is read-only when processing arrays?",
     "Type": "MultipleChoice",
     "Options": [ "for", "while", "foreach", "do-while" ],
     "CorrectIndex": 2
   },
   {
-    "Text": "12. Which collection can grow or shrink dynamically?",
+    "Text": "Which collection can grow or shrink dynamically?",
     "Type": "MultipleChoice",
     "Options": [ "Array", "List", "Loop", "Variable" ],
     "CorrectIndex": 1
   },
   {
-    "Text": "13. Arrays can be passed to methods as arguments.",
+    "Text": "Arrays can be passed to methods as arguments.",
     "Type": "TrueFalse",
     "Options": [ "True", "False" ],
     "CorrectIndex": 0
   },
   {
-    "Text": "14. Which class is used to write array data to a file?",
+    "Text": "Which class is used to write array data to a file?",
     "Type": "MultipleChoice",
     "Options": [ "File", "StreamReader", "StreamWriter", "Random" ],
     "CorrectIndex": 2
   },
   {
-    "Text": "15. Jagged arrays can store rows of different lengths.",
+    "Text": "Jagged arrays can store rows of different lengths.",
     "Type": "TrueFalse",
     "Options": [ "True", "False" ],
     "CorrectIndex": 0

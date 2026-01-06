@@ -1,6 +1,6 @@
 [
   {
-    "Text": "1. What is the main purpose of using methods in a program?",
+    "Text": "What is the main purpose of using methods in a program?",
     "Type": "MultipleChoice",
     "Options": [
       "Increase program size",
@@ -11,19 +11,19 @@
     "CorrectIndex": 1
   },
   {
-    "Text": "2. A void method returns a value to the calling statement.",
+    "Text": "A void method returns a value to the calling statement.",
     "Type": "TrueFalse",
     "Options": [ "True", "False" ],
     "CorrectIndex": 1
   },
   {
-    "Text": "3. Which keyword is used to pass arguments by reference?",
+    "Text": "Which keyword is used to pass arguments by reference?",
     "Type": "MultipleChoice",
     "Options": [ "value", "out", "ref", "return" ],
     "CorrectIndex": 2
   },
   {
-    "Text": "4. What is the difference between ref and out parameters?",
+    "Text": "What is the difference between ref and out parameters?",
     "Type": "MultipleChoice",
     "Options": [
       "ref must have a value before passing, out does not",
@@ -34,7 +34,7 @@
     "CorrectIndex": 0
   },
   {
-    "Text": "5. Which statements about Step Into are correct?",
+    "Text": "Which statements about Step Into are correct?",
     "Type": "MultipleChoice",
     "Options": [
       "Steps into method, uses F11, available in Debug menu",
@@ -45,7 +45,7 @@
     "CorrectIndex": 0
   },
   {
-    "Text": "6. What is modularization?",
+    "Text": "What is modularization?",
     "Type": "MultipleChoice",
     "Options": [
       "Writing long code",
@@ -56,19 +56,19 @@
     "CorrectIndex": 1
   },
   {
-    "Text": "7. A method must be called to execute.",
+    "Text": "A method must be called to execute.",
     "Type": "TrueFalse",
     "Options": [ "True", "False" ],
     "CorrectIndex": 0
   },
   {
-    "Text": "8. Which part of a method contains the executable code?",
+    "Text": "Which part of a method contains the executable code?",
     "Type": "MultipleChoice",
     "Options": [ "Header", "Parameter", "Body", "Argument" ],
     "CorrectIndex": 2
   },
   {
-    "Text": "9. Which are types of methods?",
+    "Text": "Which are types of methods?",
     "Type": "MultipleChoice",
     "Options": [
       "void, value-returning",
@@ -79,37 +79,37 @@
     "CorrectIndex": 0
   },
   {
-    "Text": "10. The return keyword sends a value back to the calling code.",
+    "Text": "The return keyword sends a value back to the calling code.",
     "Type": "TrueFalse",
     "Options": [ "True", "False" ],
     "CorrectIndex": 0
   },
   {
-    "Text": "11. Which keyword allows a parameter to return multiple values?",
+    "Text": "Which keyword allows a parameter to return multiple values?",
     "Type": "MultipleChoice",
     "Options": [ "ref", "out", "return", "void" ],
     "CorrectIndex": 1
   },
   {
-    "Text": "12. What design technique breaks problems into smaller tasks?",
+    "Text": "What design technique breaks problems into smaller tasks?",
     "Type": "MultipleChoice",
     "Options": [ "Bottom-up", "Top-down", "Looping", "Debugging" ],
     "CorrectIndex": 1
   },
   {
-    "Text": "13. Named arguments improve code readability.",
+    "Text": "Named arguments improve code readability.",
     "Type": "TrueFalse",
     "Options": [ "True", "False" ],
     "CorrectIndex": 0
   },
   {
-    "Text": "14. Which access modifier allows access outside the class?",
+    "Text": "Which access modifier allows access outside the class?",
     "Type": "MultipleChoice",
     "Options": [ "private", "protected", "public", "internal" ],
     "CorrectIndex": 2
   },
   {
-    "Text": "15. Methods can accept multiple parameters.",
+    "Text": "Methods can accept multiple parameters.",
     "Type": "TrueFalse",
     "Options": [ "True", "False" ],
     "CorrectIndex": 0

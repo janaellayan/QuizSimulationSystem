@@ -1,18 +1,18 @@
 [
   {
-    "Text": "1. Which control is used to accept keyboard input from the user?",
+    "Text": "Which control is used to accept keyboard input from the user?",
     "Type": "MultipleChoice",
     "Options": [ "Label", "Button", "TextBox", "PictureBox" ],
     "CorrectIndex": 2
   },
   {
-    "Text": "2. A string variable can store numbers, letters, and symbols.",
+    "Text": "A string variable can store numbers, letters, and symbols.",
     "Type": "TrueFalse",
     "Options": [ "True", "False" ],
     "CorrectIndex": 0
   },
   {
-    "Text": "3. What will be the result of dividing two integers in C#?",
+    "Text": "What will be the result of dividing two integers in C#?",
     "Type": "MultipleChoice",
     "Options": [
       "A decimal value",
@@ -23,7 +23,7 @@
     "CorrectIndex": 2
   },
   {
-    "Text": "4. Which situations can cause an exception at runtime?",
+    "Text": "Which situations can cause an exception at runtime?",
     "Type": "MultipleChoice",
     "Options": [
       "Invalid user input, Division by zero, Parsing non-numeric text",
@@ -34,7 +34,7 @@
     "CorrectIndex": 0
   },
   {
-    "Text": "5. What is the main difference between a GroupBox and a Panel control?",
+    "Text": "What is the main difference between a GroupBox and a Panel control?",
     "Type": "MultipleChoice",
     "Options": [
       "A GroupBox can contain controls, but a Panel cannot",
@@ -45,25 +45,25 @@
     "CorrectIndex": 2
   },
   {
-    "Text": "6. Which method converts a string to an integer?",
+    "Text": "Which method converts a string to an integer?",
     "Type": "MultipleChoice",
     "Options": [ "ToString()", "int.Parse()", "Convert()", "String()" ],
     "CorrectIndex": 1
   },
   {
-    "Text": "7. Variables can store only one value at a time.",
+    "Text": "Variables can store only one value at a time.",
     "Type": "TrueFalse",
     "Options": [ "True", "False" ],
     "CorrectIndex": 0
   },
   {
-    "Text": "8. Which operator is used for string concatenation?",
+    "Text": "Which operator is used for string concatenation?",
     "Type": "MultipleChoice",
     "Options": [ "*", "&", "+", "%" ],
     "CorrectIndex": 2
   },
   {
-    "Text": "9. Which are numeric data types in C#?",
+    "Text": "Which are numeric data types in C#?",
     "Type": "MultipleChoice",
     "Options": [
       "int, double, decimal",
@@ -74,31 +74,31 @@
     "CorrectIndex": 0
   },
   {
-    "Text": "10. A local variable can be accessed from any method in a class.",
+    "Text": "A local variable can be accessed from any method in a class.",
     "Type": "TrueFalse",
     "Options": [ "True", "False" ],
     "CorrectIndex": 1
   },
   {
-    "Text": "11. Which statement prevents a program from crashing due to invalid input?",
+    "Text": "Which statement prevents a program from crashing due to invalid input?",
     "Type": "MultipleChoice",
     "Options": [ "if-else", "try-catch", "loop", "method" ],
     "CorrectIndex": 1
   },
   {
-    "Text": "12. Which method converts numbers to formatted strings?",
+    "Text": "Which method converts numbers to formatted strings?",
     "Type": "MultipleChoice",
     "Options": [ "Parse", "Format", "ToString", "Convert" ],
     "CorrectIndex": 2
   },
   {
-    "Text": "13. Constants are declared using the const keyword.",
+    "Text": "Constants are declared using the const keyword.",
     "Type": "TrueFalse",
     "Options": [ "True", "False" ],
     "CorrectIndex": 0
   },
   {
-    "Text": "14. What happens when an exception is not handled?",
+    "Text": "What happens when an exception is not handled?",
     "Type": "MultipleChoice",
     "Options": [
       "Program pauses",
@@ -109,7 +109,7 @@
     "CorrectIndex": 2
   },
   {
-    "Text": "15. Fields are declared inside methods.",
+    "Text": "Fields are declared inside methods.",
     "Type": "TrueFalse",
     "Options": [ "True", "False" ],
     "CorrectIndex": 1
