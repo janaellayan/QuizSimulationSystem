@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -60,17 +61,82 @@ namespace Form1
         // Button click event to open second form
         private void btnStart_Click(object sender, EventArgs e)
         {
+            string studentName = txtName.Text.Trim();
+            string studentID = txtID.Text.Trim();
+
+            // 1️⃣ Validate Name
+            if (string.IsNullOrEmpty(studentName))
+            {
+                MessageBox.Show(
+                    "Please enter your name.",
+                    "Missing Information",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                txtName.Focus();
+                return;
+            }
+
+            // Name must contain letters only
+            if (!studentName.All(c => char.IsLetter(c) || c == ' '))
+            {
+                MessageBox.Show(
+                    "Name must contain letters only.",
+                    "Invalid Name",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                txtName.Focus();
+                return;
+            }
+
+            // 2️⃣ Validate ID
+            if (string.IsNullOrEmpty(studentID))
+            {
+                MessageBox.Show(
+                    "Please enter your ID.",
+                    "Missing Information",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                txtID.Focus();
+                return;
+            }
+
+            // ID must be numbers only
+            if (!int.TryParse(studentID, out _))
+            {
+                MessageBox.Show(
+                    "ID must contain numbers only.",
+                    "Invalid ID",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                txtID.Focus();
+                return;
+            }
+
+            // 3️⃣ Validate Chapter
+            if (comboChapters.SelectedIndex == -1)
+            {
+                MessageBox.Show(
+                    "Please select a chapter.",
+                    "Missing Information",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                comboChapters.Focus();
+                return;
+            }
+
+            // 4️⃣ Everything is valid → Open Form2
             string selectedChapter = comboChapters.SelectedItem.ToString();
 
-            string studentName =txtName.Text;
-            string studentID = txtID.Text;
-
-
-            // open only Form2 and pass selected chapter
-            Form2 form2 = new Form2(selectedChapter,studentName,studentID);
+            Form2 form2 = new Form2(selectedChapter, studentName, studentID);
             form2.Show();
             this.Hide();
         }
+
 
         // Function to make rounded rectangle
         private GraphicsPath GetRoundedPath(Rectangle rect, int radius)
@@ -130,44 +196,11 @@ namespace Form1
             );
         }
 
-        private void txtID_TextChanged(object sender, EventArgs e)
-        {
-            String id = txtID.Text;
-            try
-            {
-                // checks for whitespaces, or any non-number characters
-                if (String.IsNullOrEmpty(id) || !int.TryParse(id, out int number))
-                {
-                    throw new Exception();
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("ID number cannot be empty or anything other than numbers. ", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+   
 
         private void label1_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void txtName_TextChanged(object sender, EventArgs e)
-
-        {
-            this.Focus();
-            String name = txtName.Text;
-
-            try {
-                // checks for whitespaces, or any non-letter characters, while allowing spaces between names
-                if (String.IsNullOrEmpty(name) || !name.Any(char.IsLetter)|| !name.All(c => char.IsLetter(c) || c == ' '))
-                {
-                    throw new Exception();
-                }
-            }
-            catch (Exception) { 
-                MessageBox.Show("Name cannot be empty or anything other than letters. ", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void pnlQuestion_Paint(object sender, PaintEventArgs e)
@@ -176,3 +209,7 @@ namespace Form1
         }
     }
 }
+
+
+
+
