@@ -310,6 +310,22 @@ namespace Form1
                 currentQuestionIndex--;
                 ShowCurrentQuestion();
             }
+
+            // restore the last answer 
+            // without this part, the back button will shpw empty selections always
+            // confusing for users and bad UX
+            int previousSelection = userSelections[currentQuestionIndex];
+            if (previousSelection != -1)   // if they answered this ome and didn't leave it empty
+            {
+                if (previousSelection == 0)
+                    radioA.Checked = true;
+                else if (previousSelection == 1)
+                    radioB.Checked = true;
+                else if (previousSelection == 2)
+                    radioC.Checked = true;
+                else if (previousSelection == 3)
+                    radioD.Checked = true;
+            }
         }
     }
 }
