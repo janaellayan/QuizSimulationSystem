@@ -39,6 +39,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -51,7 +52,7 @@
             this.btnStartQuiz.FlatAppearance.BorderSize = 0;
             this.btnStartQuiz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStartQuiz.ForeColor = System.Drawing.Color.White;
-            this.btnStartQuiz.Location = new System.Drawing.Point(231, 321);
+            this.btnStartQuiz.Location = new System.Drawing.Point(364, 312);
             this.btnStartQuiz.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStartQuiz.Name = "btnStartQuiz";
             this.btnStartQuiz.Size = new System.Drawing.Size(151, 58);
@@ -64,6 +65,7 @@
             // 
             this.panel2.AutoScroll = true;
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.panel2.Controls.Add(this.btnBack);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.btnStartQuiz);
             this.panel2.Controls.Add(this.lblSelectedChapter);
@@ -169,6 +171,21 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Time Limit : 5 Minutes";
             // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnBack.FlatAppearance.BorderSize = 0;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.ForeColor = System.Drawing.Color.White;
+            this.btnBack.Location = new System.Drawing.Point(108, 312);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(151, 58);
+            this.btnBack.TabIndex = 14;
+            this.btnBack.Text = "Go Back";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -200,5 +217,6 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label lblSelectedChapter;
+        private System.Windows.Forms.Button btnBack;
     }
 }

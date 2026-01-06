@@ -67,7 +67,7 @@ namespace Form1
         private void btnBack_Click(object sender, EventArgs e)
         {
             // go back to first form
-            Form1 f1 = new Form1();
+            User_Info f1 = new User_Info();
             f1.Show();
             this.Close();
         }
