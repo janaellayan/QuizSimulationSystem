@@ -64,7 +64,7 @@ namespace Form1
             string studentName = txtName.Text.Trim();
             string studentID = txtID.Text.Trim();
 
-            // 1️⃣ Validate Name
+            // Validate Name
             if (string.IsNullOrEmpty(studentName))
             {
                 MessageBox.Show(
@@ -90,7 +90,7 @@ namespace Form1
                 return;
             }
 
-            // 2️⃣ Validate ID
+            //  Validate ID
             if (string.IsNullOrEmpty(studentID))
             {
                 MessageBox.Show(
@@ -116,7 +116,7 @@ namespace Form1
                 return;
             }
 
-            // 3️⃣ Validate Chapter
+            //  Validate Chapter
             if (comboChapters.SelectedIndex == -1)
             {
                 MessageBox.Show(
@@ -129,7 +129,7 @@ namespace Form1
                 return;
             }
 
-            // 4️⃣ Everything is valid → Open Form2
+            // Everything is valid → Open Form2
             string selectedChapter = comboChapters.SelectedItem.ToString();
 
             Form2 form2 = new Form2(selectedChapter, studentName, studentID);
