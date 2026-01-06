@@ -76,7 +76,7 @@ namespace Form1
             {
                 MessageBox.Show("Error loading quiz: " + ex.Message);
             }
-            MessageBox.Show($"Loading: {selectedChapter}");  // for debug
+            // MessageBox.Show($"Loading: {selectedChapter}");  // for debug
 
         }
 
