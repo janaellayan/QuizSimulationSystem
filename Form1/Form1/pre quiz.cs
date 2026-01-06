@@ -1,13 +1,17 @@
-﻿using System;
+﻿using Form1.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Form1.Models.QuizGenerator;
 
 namespace Form1
 {
@@ -53,9 +57,27 @@ namespace Form1
 
         private void btnStartQuiz_Click(object sender, EventArgs e)
         {
-            Quiz_Form quizForm = new Quiz_Form(selectedChapter,studentName,studentID);
-            quizForm.Show();
-            this.Hide();
+            try
+            {
+                // loads 5 random questions and store in static state
+                string chapterfile = selectedChapter.ToLower().Replace(" ", "");
+                // this is to ensure the chapter name matches the file naming 
+                // convention used in the Questions folder
+                QuizState.SelectedQuestions = QuizGenerator.RandomizeQuestions(chapterfile);
+                QuizState.StudentName = studentName;
+                QuizState.StudentID = studentID;
+                QuizState.StartTime = DateTime.Now;  // for timer
+
+                Quiz_Form quizForm = new Quiz_Form(selectedChapter, studentName, studentID);
+                quizForm.Show();
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading quiz: " + ex.Message);
+            }
+            MessageBox.Show($"Loading: {selectedChapter}");  // for debug
+
         }
 
         private GraphicsPath GetRoundedPath(Rectangle rect, int radius)
@@ -118,5 +140,6 @@ namespace Form1
         {
 
         }
+
     }
 }

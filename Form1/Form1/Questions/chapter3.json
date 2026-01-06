@@ -1,0 +1,117 @@
+[
+  {
+    "Text": "Which control is used to accept keyboard input from the user?",
+    "Type": "MultipleChoice",
+    "Options": [ "Label", "Button", "TextBox", "PictureBox" ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "A string variable can store numbers, letters, and symbols.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "What will be the result of dividing two integers in C#?",
+    "Type": "MultipleChoice",
+    "Options": [
+      "A decimal value",
+      "A string",
+      "An integer result",
+      "A runtime error"
+    ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "Which situations can cause an exception at runtime?",
+    "Type": "MultipleChoice",
+    "Options": [
+      "Invalid user input, Division by zero, Parsing non-numeric text",
+      "Syntax errors only",
+      "Correct input only",
+      "Variable declarations"
+    ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "What is the main difference between a GroupBox and a Panel control?",
+    "Type": "MultipleChoice",
+    "Options": [
+      "A GroupBox can contain controls, but a Panel cannot",
+      "A Panel displays a border and title",
+      "A GroupBox displays a titled border, while a Panel does not display a title",
+      "A Panel is only for radio buttons"
+    ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "Which method converts a string to an integer?",
+    "Type": "MultipleChoice",
+    "Options": [ "ToString()", "int.Parse()", "Convert()", "String()" ],
+    "CorrectIndex": 1
+  },
+  {
+    "Text": "Variables can store only one value at a time.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "Which operator is used for string concatenation?",
+    "Type": "MultipleChoice",
+    "Options": [ "*", "&", "+", "%" ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "Which are numeric data types in C#?",
+    "Type": "MultipleChoice",
+    "Options": [
+      "int, double, decimal",
+      "string, char",
+      "bool only",
+      "object"
+    ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "A local variable can be accessed from any method in a class.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 1
+  },
+  {
+    "Text": "Which statement prevents a program from crashing due to invalid input?",
+    "Type": "MultipleChoice",
+    "Options": [ "if-else", "try-catch", "loop", "method" ],
+    "CorrectIndex": 1
+  },
+  {
+    "Text": "Which method converts numbers to formatted strings?",
+    "Type": "MultipleChoice",
+    "Options": [ "Parse", "Format", "ToString", "Convert" ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "Constants are declared using the const keyword.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "What happens when an exception is not handled?",
+    "Type": "MultipleChoice",
+    "Options": [
+      "Program pauses",
+      "Program ignores it",
+      "Program stops running",
+      "Program retries"
+    ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "Fields are declared inside methods.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 1
+  }
+]

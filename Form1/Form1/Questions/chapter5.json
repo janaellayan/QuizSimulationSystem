@@ -1,0 +1,92 @@
+[
+  {
+    "Text": "Which method adds an item to a ListBox control?",
+    "Type": "MultipleChoice",
+    "Options": [ "Add.Item", "Items.Add", "List.Add", "Insert.Item" ],
+    "CorrectIndex": 1
+  },
+  {
+    "Text": "A loop that never ends is called an infinite loop.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "Which loop is best used when the number of iterations is known?",
+    "Type": "MultipleChoice",
+    "Options": [ "while", "do-while", "for", "foreach" ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "Which class is used in C# to write data to a text file?",
+    "Type": "MultipleChoice",
+    "Options": [ "StreamReader", "FileDialog", "StreamWriter", "Random" ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "The StreamReader class is used to read data from a file line by line.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "Which method removes all items from a ListBox?",
+    "Type": "MultipleChoice",
+    "Options": [ "Remove()", "Clear()", "Items.Clear()", "Items.Remove()" ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "The for loop is a count-controlled loop.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "Which operator decreases a variable by 1?",
+    "Type": "MultipleChoice",
+    "Options": [ "++", "+=", "--", "-=" ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "Which are loop structures in C#?",
+    "Type": "MultipleChoice",
+    "Options": [ "while, for, do-while", "if, else", "switch", "try-catch" ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "A do-while loop checks the condition before executing.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 1
+  },
+  {
+    "Text": "Which class reads data from a file?",
+    "Type": "MultipleChoice",
+    "Options": [ "StreamWriter", "StreamReader", "FileWriter", "FileReader" ],
+    "CorrectIndex": 1
+  },
+  {
+    "Text": "Which dialog allows users to select a file to open?",
+    "Type": "MultipleChoice",
+    "Options": [ "SaveFileDialog", "OpenFileDialog", "FolderDialog", "FileBox" ],
+    "CorrectIndex": 1
+  },
+  {
+    "Text": "Random numbers are generated using the Random class.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "Which event runs when a form loads?",
+    "Type": "MultipleChoice",
+    "Options": [ "Start", "Click", "Load", "Open" ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "An infinite loop is always intentional.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 1
+  }
+]

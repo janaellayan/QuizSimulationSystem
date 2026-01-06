@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Form1.Models;
+
 
 namespace Form1
 {
@@ -23,6 +25,11 @@ namespace Form1
         DateTime quizStartTime;//to calculate time taken 
 
         private bool btnPressed = false;
+
+        private List<Question> questions;
+        private int currentQuestionIndex = 0;
+        private List<int> userSelections = new List<int>();  //user choices to track the score 
+        private int score = 0; // total as we run the code
 
         public Quiz_Form(string chapterName,string studentName,string studentID)
         {
@@ -116,9 +123,51 @@ namespace Form1
 
         private void Quiz_Form_Load(object sender, EventArgs e)
         {
-            quizStartTime = DateTime.Now; //save start time
+            quizStartTime = QuizState.StartTime; // start time
             remainingSeconds = 300;
+            questions = QuizState.SelectedQuestions;
+            currentQuestionIndex = 0;
+            ShowCurrentQuestion();
         }
+
+
+
+        //questions display method
+        private void ShowCurrentQuestion()
+        {
+            // if we still didnt load questions or if we are done with five questions
+            if (questions == null || currentQuestionIndex >= questions.Count) return;
+            Question q = questions[currentQuestionIndex];
+
+            lblQnum.Text = $"Question {currentQuestionIndex + 1}/5"; // +1 because index starts from 0
+            lblQtext.Text = q.Text;  // maiin question text
+
+            //there are four radio buttons always
+            // if the question is true/false we only use two and the other two are hidden 
+            if (q.Type == QuestionType.TrueFalse)
+            {
+                radioA.Text = q.Options[0];  // True
+                radioB.Text = q.Options[1];  // False
+                radioC.Visible = false;
+                radioD.Visible = false;
+                radioA.Visible = radioB.Visible = true;
+            }
+            else
+            {
+                radioA.Text = q.Options[0];
+                radioB.Text = q.Options[1];
+                radioC.Text = q.Options[2];
+                radioD.Text = q.Options[3];
+                radioA.Visible = radioB.Visible = radioC.Visible = radioD.Visible = true;
+            }
+
+            // clear previous selections
+            radioA.Checked = radioB.Checked = radioC.Checked = radioD.Checked = false;
+        }
+
+        // the questionsdisplay one at a time, so that we deal with 4 radio buttons only per question
+        // 4 buttons * five questions = 20 buttons total
+        // messy, so we do it this way
 
         private void quizTimer_Tick(object sender, EventArgs e)
         {
@@ -156,6 +205,14 @@ namespace Form1
                 timeTaken.Seconds.ToString("D2");
 
             int score = 0;
+            for (int i = 0; i < questions.Count; i++)
+            {
+                if (i < userSelections.Count && userSelections[i] == questions[i].CorrectIndex && userSelections[i]!=-1)
+                {
+                    score++;
+                }
+            }
+
             saveResultToCSV(score, finalTime);
             Result_Form resultForm = new Result_Form(score, finalTime);
             resultForm.Show();
@@ -210,5 +267,74 @@ namespace Form1
             FinishQuiz(); 
         }
 
+        private void lblTimer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlQuestion_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            // answer index
+            // here we record the answer before moving to next question
+            int selected = -1;
+            if (radioA.Checked)
+                selected = 0;
+            else if (radioB.Checked)
+                selected = 1;
+            else if (radioC.Checked)
+                selected = 2;
+            else if (radioD.Checked)
+                selected = 3;
+            // now this works 10/10
+            // adds the selected answer index to the list
+            userSelections.Add(selected);
+            currentQuestionIndex++;
+
+            // validation to ensure an answer is selected
+            if (selected == -1)
+            {
+                MessageBox.Show("Please select an answer!");
+                return;
+            }
+
+            if (currentQuestionIndex < questions.Count)
+            {
+                ShowCurrentQuestion();
+            }
+            else
+                FinishQuiz();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            if (currentQuestionIndex > 0)
+            {
+                currentQuestionIndex--;
+                ShowCurrentQuestion();
+            }
+            else return; // no going back from question 1
+            //fixed a big issue here
+
+            // restore the last answer 
+            // without this part, the back button will shpw empty selections always
+            // confusing for users and bad UX
+            int previousSelection = userSelections[currentQuestionIndex];
+            if (previousSelection != -1)   // if they answered this ome and didn't leave it empty
+            {
+                if (previousSelection == 0)
+                    radioA.Checked = true;
+                else if (previousSelection == 1)
+                    radioB.Checked = true;
+                else if (previousSelection == 2)
+                    radioC.Checked = true;
+                else if (previousSelection == 3)
+                    radioD.Checked = true;
+            }
+        }
     }
 }

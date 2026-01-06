@@ -1,0 +1,117 @@
+[
+  {
+    "Text": "What is the main purpose of using methods in a program?",
+    "Type": "MultipleChoice",
+    "Options": [
+      "Increase program size",
+      "Break a complex program into small pieces",
+      "Replace variables",
+      "Eliminate loops"
+    ],
+    "CorrectIndex": 1
+  },
+  {
+    "Text": "A void method returns a value to the calling statement.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 1
+  },
+  {
+    "Text": "Which keyword is used to pass arguments by reference?",
+    "Type": "MultipleChoice",
+    "Options": [ "value", "out", "ref", "return" ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "What is the difference between ref and out parameters?",
+    "Type": "MultipleChoice",
+    "Options": [
+      "ref must have a value before passing, out does not",
+      "out must have a value before passing",
+      "They are identical",
+      "ref does not modify values"
+    ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "Which statements about Step Into are correct?",
+    "Type": "MultipleChoice",
+    "Options": [
+      "Steps into method, uses F11, available in Debug menu",
+      "Skips method execution",
+      "Runs program faster",
+      "Stops debugging"
+    ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "What is modularization?",
+    "Type": "MultipleChoice",
+    "Options": [
+      "Writing long code",
+      "Breaking a program into methods",
+      "Using loops",
+      "Using arrays"
+    ],
+    "CorrectIndex": 1
+  },
+  {
+    "Text": "A method must be called to execute.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "Which part of a method contains the executable code?",
+    "Type": "MultipleChoice",
+    "Options": [ "Header", "Parameter", "Body", "Argument" ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "Which are types of methods?",
+    "Type": "MultipleChoice",
+    "Options": [
+      "void, value-returning",
+      "loop",
+      "conditional",
+      "array"
+    ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "The return keyword sends a value back to the calling code.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "Which keyword allows a parameter to return multiple values?",
+    "Type": "MultipleChoice",
+    "Options": [ "ref", "out", "return", "void" ],
+    "CorrectIndex": 1
+  },
+  {
+    "Text": "What design technique breaks problems into smaller tasks?",
+    "Type": "MultipleChoice",
+    "Options": [ "Bottom-up", "Top-down", "Looping", "Debugging" ],
+    "CorrectIndex": 1
+  },
+  {
+    "Text": "Named arguments improve code readability.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 0
+  },
+  {
+    "Text": "Which access modifier allows access outside the class?",
+    "Type": "MultipleChoice",
+    "Options": [ "private", "protected", "public", "internal" ],
+    "CorrectIndex": 2
+  },
+  {
+    "Text": "Methods can accept multiple parameters.",
+    "Type": "TrueFalse",
+    "Options": [ "True", "False" ],
+    "CorrectIndex": 0
+  }
+]
