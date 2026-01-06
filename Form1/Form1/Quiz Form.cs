@@ -123,9 +123,9 @@ namespace Form1
 
         private void Quiz_Form_Load(object sender, EventArgs e)
         {
-            quizStartTime = QuizGenerator.QuizState.StartTime; // start time
+            quizStartTime = QuizState.StartTime; // start time
             remainingSeconds = 300;
-            questions = QuizGenerator.QuizState.SelectedQuestions;
+            questions = QuizState.SelectedQuestions;
             currentQuestionIndex = 0;
             ShowCurrentQuestion();
         }

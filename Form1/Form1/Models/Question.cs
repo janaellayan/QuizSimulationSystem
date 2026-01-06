@@ -68,19 +68,17 @@ namespace Form1.Models
             string json = File.ReadAllText(path);
             return JsonConvert.DeserializeObject<List<Question>>(json);
         }
-
-        // this is so the quiz data is shared across forms
-        // prequiz -> quizform -> resultform
-        // prequiz loads data here and the next form ( quizform ) recieves it after
-        public static class QuizState
-        {
-            public static List<Question> SelectedQuestions { get; set; }
-            public static string StudentName { get; set; }
-            public static string StudentID { get; set; }
-            public static string ChapterName { get; set; }
-            public static DateTime StartTime { get; set; }
-            public static int CurrentQuestionIndex { get; set; } = 0;
-        }
-
+    }
+    // this is so the quiz data is shared across forms
+    // prequiz -> quizform -> resultform
+    // prequiz loads data here and the next form ( quizform ) recieves it after
+    public static class QuizState
+    {
+        public static List<Question> SelectedQuestions { get; set; }
+        public static string StudentName { get; set; }
+        public static string StudentID { get; set; }
+        public static string ChapterName { get; set; }
+        public static DateTime StartTime { get; set; }
+        public static int CurrentQuestionIndex { get; set; } = 0;
     }
 }
