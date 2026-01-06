@@ -345,7 +345,8 @@ namespace Form1
             // validation to ensure an answer is selected
             if (selected == -1)
             {
-                MessageBox.Show("Please select an answer!");
+                MessageBox.Show("Please select an answer!","No answer selected",
+                    MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 return;
             }
 

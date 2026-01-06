@@ -143,7 +143,8 @@ namespace Form1
             }
             catch (Exception)
             {
-                MessageBox.Show("ID number cannot be empty or anything other than numbers. ", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("ID number cannot be empty or anything other than numbers. ", "Invalid Input", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -166,7 +167,8 @@ namespace Form1
                 }
             }
             catch (Exception) { 
-                MessageBox.Show("Name cannot be empty or anything other than letters. ", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Name cannot be empty or anything other than letters. ", "Invalid Input", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
