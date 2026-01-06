@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace Form1
 {
-    public partial class Form1 : Form
+    public partial class User_Info : Form
     {
         // variable to track button pressed state
         private bool btnPressed = false;
 
-        public Form1()
+        public User_Info()
         {
             InitializeComponent();
 
@@ -39,7 +39,7 @@ namespace Form1
             btnNext.MouseUp += (s, e) => { btnPressed = false; btnNext.Invalidate(); };
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void User_Info_Load(object sender, EventArgs e)
         {
             // Clear items first
             comboChapters.Items.Clear();
@@ -168,6 +168,11 @@ namespace Form1
             catch (Exception) { 
                 MessageBox.Show("Name cannot be empty or anything other than letters. ", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void pnlQuestion_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

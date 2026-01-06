@@ -136,10 +136,13 @@ namespace Form1
             );
         }
 
-        private void Form2_Load_1(object sender, EventArgs e)
+
+        private void btnBack_Click(object sender, EventArgs e)
         {
-
+            // go back to user info form
+            User_Info user_Info = new User_Info();
+            user_Info.Show();
+            this.Hide();
         }
-
     }
 }

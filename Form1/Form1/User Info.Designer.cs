@@ -1,6 +1,6 @@
 ﻿namespace Form1
 {
-    partial class Form1
+    partial class User_Info
     {
         /// <summary>
         /// Required designer variable.
@@ -157,6 +157,7 @@
             this.pnlQuestion.Name = "pnlQuestion";
             this.pnlQuestion.Size = new System.Drawing.Size(705, 307);
             this.pnlQuestion.TabIndex = 8;
+            this.pnlQuestion.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlQuestion_Paint);
             // 
             // Form1
             // 
@@ -169,7 +170,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Quiz Simulation System(User Info)";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.User_Info_Load);
             this.pnlQuestion.ResumeLayout(false);
             this.pnlQuestion.PerformLayout();
             this.ResumeLayout(false);
