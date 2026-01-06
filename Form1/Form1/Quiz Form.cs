@@ -295,6 +295,13 @@ namespace Form1
             userSelections.Add(selected);
             currentQuestionIndex++;
 
+            // validation to ensure an answer is selected
+            if (selected == -1)
+            {
+                MessageBox.Show("Please select an answer!");
+                return;
+            }
+
             if (currentQuestionIndex < questions.Count)
             {
                 ShowCurrentQuestion();
