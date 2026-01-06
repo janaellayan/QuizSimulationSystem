@@ -48,6 +48,7 @@ namespace Form1
             this.quizTimer.Tick += new System.EventHandler(this.quizTimer_Tick);
             quizTimer.Start();//start timer
 
+
             //finish button design
             btnFinish.BackColor = Color.Transparent;
             btnFinish.ForeColor = Color.White;
