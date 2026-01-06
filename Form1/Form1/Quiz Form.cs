@@ -317,6 +317,8 @@ namespace Form1
                 currentQuestionIndex--;
                 ShowCurrentQuestion();
             }
+            else return; // no going back from question 1
+            //fixed a big issue here
 
             // restore the last answer 
             // without this part, the back button will shpw empty selections always
