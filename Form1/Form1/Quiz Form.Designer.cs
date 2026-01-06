@@ -109,7 +109,7 @@
             this.btnFinish.TabIndex = 6;
             this.btnFinish.Text = "Finish";
             this.btnFinish.UseVisualStyleBackColor = false;
-            this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click_1);
+            this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click);
             // 
             // pictureBox1
             // 
