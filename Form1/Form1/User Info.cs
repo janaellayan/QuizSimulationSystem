@@ -153,7 +153,9 @@ namespace Form1
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
-        {                  
+
+        {
+            this.Focus();
             String name = txtName.Text;
 
             try {
