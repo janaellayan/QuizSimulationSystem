@@ -177,7 +177,6 @@ namespace Form1
 
             int minutes = remainingSeconds / 60;
             int seconds = remainingSeconds % 60;
-
             //update timer label
             lblTimer.Text = minutes.ToString("D2") + ":" + seconds.ToString("D2");
 
@@ -185,6 +184,8 @@ namespace Form1
             if (remainingSeconds <= 0)
             {
                 quizTimer.Stop();
+                MessageBox.Show("Time's up! Quiz submitted automatically.", "Time Expired",
+                       MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 FinishQuiz();
             }
         }
