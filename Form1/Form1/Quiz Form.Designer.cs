@@ -32,17 +32,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Quiz_Form));
             this.lblTimer = new System.Windows.Forms.Label();
             this.pnlQuestion = new System.Windows.Forms.Panel();
+            this.radioD = new System.Windows.Forms.RadioButton();
+            this.radioC = new System.Windows.Forms.RadioButton();
+            this.radioB = new System.Windows.Forms.RadioButton();
+            this.radioA = new System.Windows.Forms.RadioButton();
+            this.lblQtext = new System.Windows.Forms.Label();
+            this.lblQnum = new System.Windows.Forms.Label();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.lblChapter = new System.Windows.Forms.Label();
             this.btnFinish = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.quizTimer = new System.Windows.Forms.Timer(this.components);
-            this.lblQnum = new System.Windows.Forms.Label();
-            this.lblQtext = new System.Windows.Forms.Label();
-            this.radioA = new System.Windows.Forms.RadioButton();
-            this.radioB = new System.Windows.Forms.RadioButton();
-            this.radioC = new System.Windows.Forms.RadioButton();
-            this.radioD = new System.Windows.Forms.RadioButton();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.pnlQuestion.SuspendLayout();
@@ -51,6 +51,9 @@
             // 
             // lblTimer
             // 
+            this.lblTimer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTimer.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblTimer.Location = new System.Drawing.Point(730, 22);
@@ -61,6 +64,9 @@
             // 
             // pnlQuestion
             // 
+            this.pnlQuestion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlQuestion.AutoScroll = true;
             this.pnlQuestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
             this.pnlQuestion.Controls.Add(this.radioD);
@@ -76,6 +82,86 @@
             this.pnlQuestion.Size = new System.Drawing.Size(831, 304);
             this.pnlQuestion.TabIndex = 2;
             // 
+            // radioD
+            // 
+            this.radioD.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.radioD.AutoSize = true;
+            this.radioD.Location = new System.Drawing.Point(42, 214);
+            this.radioD.Name = "radioD";
+            this.radioD.Size = new System.Drawing.Size(38, 20);
+            this.radioD.TabIndex = 6;
+            this.radioD.TabStop = true;
+            this.radioD.Text = "D";
+            this.radioD.UseVisualStyleBackColor = true;
+            // 
+            // radioC
+            // 
+            this.radioC.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.radioC.AutoSize = true;
+            this.radioC.Location = new System.Drawing.Point(42, 175);
+            this.radioC.Name = "radioC";
+            this.radioC.Size = new System.Drawing.Size(37, 20);
+            this.radioC.TabIndex = 5;
+            this.radioC.TabStop = true;
+            this.radioC.Text = "C";
+            this.radioC.UseVisualStyleBackColor = true;
+            // 
+            // radioB
+            // 
+            this.radioB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.radioB.AutoSize = true;
+            this.radioB.Location = new System.Drawing.Point(42, 138);
+            this.radioB.Name = "radioB";
+            this.radioB.Size = new System.Drawing.Size(75, 20);
+            this.radioB.TabIndex = 4;
+            this.radioB.TabStop = true;
+            this.radioB.Text = "B/False";
+            this.radioB.UseVisualStyleBackColor = true;
+            // 
+            // radioA
+            // 
+            this.radioA.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.radioA.AutoSize = true;
+            this.radioA.Location = new System.Drawing.Point(42, 99);
+            this.radioA.Name = "radioA";
+            this.radioA.Size = new System.Drawing.Size(79, 20);
+            this.radioA.TabIndex = 3;
+            this.radioA.TabStop = true;
+            this.radioA.Text = "A/TRUE";
+            this.radioA.UseVisualStyleBackColor = true;
+            // 
+            // lblQtext
+            // 
+            this.lblQtext.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblQtext.AutoSize = true;
+            this.lblQtext.Location = new System.Drawing.Point(31, 48);
+            this.lblQtext.Name = "lblQtext";
+            this.lblQtext.Size = new System.Drawing.Size(81, 16);
+            this.lblQtext.TabIndex = 2;
+            this.lblQtext.Text = "question text";
+            // 
+            // lblQnum
+            // 
+            this.lblQnum.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblQnum.AutoSize = true;
+            this.lblQnum.Location = new System.Drawing.Point(31, 17);
+            this.lblQnum.Name = "lblQnum";
+            this.lblQnum.Size = new System.Drawing.Size(52, 16);
+            this.lblQnum.TabIndex = 1;
+            this.lblQnum.Text = "number";
+            // 
             // vScrollBar1
             // 
             this.vScrollBar1.Location = new System.Drawing.Point(19, 17);
@@ -85,6 +171,9 @@
             // 
             // lblChapter
             // 
+            this.lblChapter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblChapter.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblChapter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblChapter.Location = new System.Drawing.Point(44, 22);
@@ -95,6 +184,9 @@
             // 
             // btnFinish
             // 
+            this.btnFinish.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFinish.BackColor = System.Drawing.Color.SteelBlue;
             this.btnFinish.FlatAppearance.BorderSize = 0;
             this.btnFinish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -111,6 +203,9 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(683, 22);
@@ -125,70 +220,11 @@
             // 
             this.quizTimer.Interval = 1000;
             // 
-            // lblQnum
-            // 
-            this.lblQnum.AutoSize = true;
-            this.lblQnum.Location = new System.Drawing.Point(31, 17);
-            this.lblQnum.Name = "lblQnum";
-            this.lblQnum.Size = new System.Drawing.Size(52, 16);
-            this.lblQnum.TabIndex = 1;
-            this.lblQnum.Text = "number";
-            // 
-            // lblQtext
-            // 
-            this.lblQtext.AutoSize = true;
-            this.lblQtext.Location = new System.Drawing.Point(31, 48);
-            this.lblQtext.Name = "lblQtext";
-            this.lblQtext.Size = new System.Drawing.Size(81, 16);
-            this.lblQtext.TabIndex = 2;
-            this.lblQtext.Text = "question text";
-            // 
-            // radioA
-            // 
-            this.radioA.AutoSize = true;
-            this.radioA.Location = new System.Drawing.Point(42, 99);
-            this.radioA.Name = "radioA";
-            this.radioA.Size = new System.Drawing.Size(79, 20);
-            this.radioA.TabIndex = 3;
-            this.radioA.TabStop = true;
-            this.radioA.Text = "A/TRUE";
-            this.radioA.UseVisualStyleBackColor = true;
-            // 
-            // radioB
-            // 
-            this.radioB.AutoSize = true;
-            this.radioB.Location = new System.Drawing.Point(42, 138);
-            this.radioB.Name = "radioB";
-            this.radioB.Size = new System.Drawing.Size(75, 20);
-            this.radioB.TabIndex = 4;
-            this.radioB.TabStop = true;
-            this.radioB.Text = "B/False";
-            this.radioB.UseVisualStyleBackColor = true;
-            // 
-            // radioC
-            // 
-            this.radioC.AutoSize = true;
-            this.radioC.Location = new System.Drawing.Point(42, 175);
-            this.radioC.Name = "radioC";
-            this.radioC.Size = new System.Drawing.Size(37, 20);
-            this.radioC.TabIndex = 5;
-            this.radioC.TabStop = true;
-            this.radioC.Text = "C";
-            this.radioC.UseVisualStyleBackColor = true;
-            // 
-            // radioD
-            // 
-            this.radioD.AutoSize = true;
-            this.radioD.Location = new System.Drawing.Point(42, 214);
-            this.radioD.Name = "radioD";
-            this.radioD.Size = new System.Drawing.Size(38, 20);
-            this.radioD.TabIndex = 6;
-            this.radioD.TabStop = true;
-            this.radioD.Text = "D";
-            this.radioD.UseVisualStyleBackColor = true;
-            // 
             // btnNext
             // 
+            this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNext.Location = new System.Drawing.Point(462, 435);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
@@ -199,6 +235,9 @@
             // 
             // btnBack
             // 
+            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBack.Location = new System.Drawing.Point(223, 438);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 23);
