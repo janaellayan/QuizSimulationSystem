@@ -79,10 +79,6 @@ namespace Form1
             this.Close();
         }
 
-
-
-
-
         // design under this line
         // function to make rounded rectangle
         private GraphicsPath GetRoundedPath(Rectangle rect, int radius)
