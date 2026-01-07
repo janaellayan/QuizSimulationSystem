@@ -58,6 +58,18 @@ namespace Form1
         {
             this.Close();
         }
+        private void linkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                this.linkLabel.LinkVisited = true;
+                System.Diagnostics.Process.Start("mailto:contactjanaellayan@gmail.com");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error opening link: " + ex.Message);
+            }
+        }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -67,6 +79,11 @@ namespace Form1
             this.Close();
         }
 
+
+
+
+
+        // design under this line
         // function to make rounded rectangle
         private GraphicsPath GetRoundedPath(Rectangle rect, int radius)
         {
@@ -114,18 +131,6 @@ namespace Form1
                 Color.White,
                 TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
             );
-        }
-
-        private void linkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            try { 
-                this.linkLabel.LinkVisited = true;
-                System.Diagnostics.Process.Start("mailto:contactjanaellayan@gmail.com");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error opening link: " + ex.Message);
-            }
         }
     }
 }
