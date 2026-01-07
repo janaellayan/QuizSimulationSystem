@@ -50,10 +50,6 @@ namespace Form1
             btnStartQuiz.MouseUp += (s, e) => { btnPressed = false; btnStartQuiz.Invalidate(); };
         }
 
-        private void Form2_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnStartQuiz_Click(object sender, EventArgs e)
         {
