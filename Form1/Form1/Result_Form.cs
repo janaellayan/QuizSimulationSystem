@@ -54,11 +54,6 @@ namespace Form1
             btnBack.MouseUp += (s, e) => { btnPressed = false; btnBack.Invalidate(); };
         }
 
-        private void Result_Form_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
