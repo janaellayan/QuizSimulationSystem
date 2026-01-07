@@ -167,9 +167,5 @@ namespace Form1
             }
         }
 
-        private void pnlQuestion_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
