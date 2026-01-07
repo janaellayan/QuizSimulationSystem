@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -58,14 +57,15 @@ namespace Form1
             comboChapters.SelectedIndex = -1;
         }
 
-        // Button click event to open second form
         private void btnStart_Click(object sender, EventArgs e)
         {
-            string studentName = txtName.Text.Trim();
-            string studentID = txtID.Text.Trim();
+            string Name = txtName.Text.Trim();
+            string ID = txtID.Text.Trim();
+            string selectedChapter = comboChapters.SelectedItem?.ToString();
 
-            // Validate Name
-            if (string.IsNullOrEmpty(studentName))
+
+            //Check the name entered
+            if (string.IsNullOrEmpty(Name))
             {
                 MessageBox.Show(
                     "Please enter your name.",
@@ -77,11 +77,11 @@ namespace Form1
                 return;
             }
 
-            // Name must contain letters only
-            if (!studentName.All(c => char.IsLetter(c) || c == ' '))
+            //Check the name contain letters only
+            if (!Name.All(c => char.IsLetter(c) || c == ' '))
             {
                 MessageBox.Show(
-                    "Name must contain letters only.",
+                    "Name should contain letters only.",
                     "Invalid Name",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
@@ -90,8 +90,8 @@ namespace Form1
                 return;
             }
 
-            //  Validate ID
-            if (string.IsNullOrEmpty(studentID))
+            // Check the ID
+            if (string.IsNullOrEmpty(ID))
             {
                 MessageBox.Show(
                     "Please enter your ID.",
@@ -104,7 +104,7 @@ namespace Form1
             }
 
             // ID must be numbers only
-            if (!int.TryParse(studentID, out _))
+            if (!int.TryParse(ID, out _))
             {
                 MessageBox.Show(
                     "ID must contain numbers only.",
@@ -116,7 +116,7 @@ namespace Form1
                 return;
             }
 
-            //  Validate Chapter
+            //  check hapter
             if (comboChapters.SelectedIndex == -1)
             {
                 MessageBox.Show(
@@ -128,12 +128,9 @@ namespace Form1
                 comboChapters.Focus();
                 return;
             }
-
-            // Everything is valid → Open Form2
-            string selectedChapter = comboChapters.SelectedItem.ToString();
-
-            Form2 form2 = new Form2(selectedChapter, studentName, studentID);
-            form2.Show();
+            //go to next form
+            pre_quiz pre_Quiz = new pre_quiz(selectedChapter, Name, ID);
+            pre_Quiz.Show();
             this.Hide();
         }
 

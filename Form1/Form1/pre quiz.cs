@@ -9,7 +9,7 @@ using static Form1.Models.QuizGenerator;
 
 namespace Form1
 {
-    public partial class Form2 : Form
+    public partial class pre_quiz : Form
     {
         // variable to track button pressed state
         private bool btnPressed = false;
@@ -18,7 +18,7 @@ namespace Form1
         string studentName;
         string studentID;
 
-        public Form2(string chapter, string studentName, string studentID)
+        public pre_quiz(string chapter, string studentName, string studentID)
         {
             InitializeComponent();
             selectedChapter = chapter;
@@ -44,7 +44,7 @@ namespace Form1
             btnStartQuiz.MouseDown += (s, e) => { btnPressed = true; btnStartQuiz.Invalidate(); };
             btnStartQuiz.MouseUp += (s, e) => { btnPressed = false; btnStartQuiz.Invalidate(); };
 
-            // ===== Go Back button styling =====
+            // Go Back button styling
             btnBack.BackColor = Color.Transparent;
             btnBack.ForeColor = Color.White;
             btnBack.Font = new Font("Segoe UI", 12, FontStyle.Bold);
@@ -58,10 +58,7 @@ namespace Form1
             btnBack.MouseUp += (s, e) => { btnBackPressed = false; btnBack.Invalidate(); };
         }
 
-        private void Form2_Load(object sender, EventArgs e)
-        {
-
-        }
+     
 
         private void btnStartQuiz_Click(object sender, EventArgs e)
         {
@@ -189,6 +186,11 @@ namespace Form1
             User_Info user_Info = new User_Info();
             user_Info.Show();
             this.Hide();
+        }
+
+        private void pre_quiz_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

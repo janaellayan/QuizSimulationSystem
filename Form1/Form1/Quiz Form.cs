@@ -28,8 +28,6 @@ namespace Form1
         private List<Question> questions;
         private int currentQuestionIndex = 0;
         private List<int> userSelections = new List<int>();  //user choices to track the score 
-        private int score = 0; // total as we run the code
-
         public Quiz_Form(string chapterName, string studentName, string studentID)
         {
             InitializeComponent();
