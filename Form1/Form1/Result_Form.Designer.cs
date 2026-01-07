@@ -163,7 +163,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Result_Form";
             this.Text = "Result_Form";
-            this.Load += new System.EventHandler(this.Result_Form_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
