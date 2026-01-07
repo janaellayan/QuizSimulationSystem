@@ -21,27 +21,24 @@ namespace Form1
             InitializeComponent();
 
             lblScore.Text = score.ToString();
-            lblTime.Text = timeTaken;
+            lblTime.Text = "Time: " + timeTaken;
 
-            // basic look
+            // ===== Exit Button Design =====
             btnExit.BackColor = Color.Transparent;
             btnExit.ForeColor = Color.White;
             btnExit.Font = new Font("Segoe UI", 11, FontStyle.Bold);
             btnExit.Width = 120;
             btnExit.Height = 45;
 
-            // Custom paint method for rounded + gradient button
             btnExit.Paint += CustomButton_Paint;
 
-            // hover effect
             btnExit.MouseEnter += (s, e) => btnExit.BackColor = Color.SteelBlue;
             btnExit.MouseLeave += (s, e) => btnExit.BackColor = Color.DodgerBlue;
 
-            // pressed effect
             btnExit.MouseDown += (s, e) => { btnPressed = true; btnExit.Invalidate(); };
             btnExit.MouseUp += (s, e) => { btnPressed = false; btnExit.Invalidate(); };
 
-            // same for back btn
+            // ===== Back Button Design =====
             btnBack.BackColor = Color.Transparent;
             btnBack.ForeColor = Color.White;
             btnBack.Font = new Font("Segoe UI", 11, FontStyle.Bold);
