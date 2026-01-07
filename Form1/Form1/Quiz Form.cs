@@ -11,7 +11,6 @@ using System.Windows.Forms;
 using System.IO;
 using Form1.Models;
 
-
 namespace Form1
 {
     public partial class Quiz_Form : Form
@@ -35,6 +34,9 @@ namespace Form1
         {
             InitializeComponent();
 
+            btnFinish.Paint += btnFinish_Paint;
+            btnExit.Paint += btnExit_Paint;
+
             this.chapterName = chapterName;
             this.studentName = studentName;
             this.studentID = studentID;
@@ -48,7 +50,6 @@ namespace Form1
             this.quizTimer.Tick += new System.EventHandler(this.quizTimer_Tick);
             quizTimer.Start();//start timer
 
-
             //finish button design
             btnFinish.BackColor = Color.Transparent;
             btnFinish.ForeColor = Color.White;
@@ -56,14 +57,12 @@ namespace Form1
             btnFinish.Width = 130;
             btnFinish.Height = 50;
 
-            btnFinish.Paint += btnFinish_Paint;
 
             btnFinish.MouseEnter += (s, e) => btnFinish.BackColor = Color.SteelBlue;
             btnFinish.MouseLeave += (s, e) => btnFinish.BackColor = Color.DodgerBlue;
 
             btnFinish.MouseDown += (s, e) => { btnPressed = true; btnFinish.Invalidate(); };
             btnFinish.MouseUp += (s, e) => { btnPressed = false; btnFinish.Invalidate(); };
-
 
             // Exit button design (make it same as Finish)
             btnExit.BackColor = Color.Transparent;
@@ -72,14 +71,12 @@ namespace Form1
             btnExit.Width = 130;
             btnExit.Height = 50;
 
-            btnExit.Paint += btnExit_Paint;
 
             btnExit.MouseEnter += (s, e) => btnExit.BackColor = Color.SteelBlue;
             btnExit.MouseLeave += (s, e) => btnExit.BackColor = Color.DodgerBlue;
 
             btnExit.MouseDown += (s, e) => { btnPressed = true; btnExit.Invalidate(); };
             btnExit.MouseUp += (s, e) => { btnPressed = false; btnExit.Invalidate(); };
-
         }
 
         int CalculateGrade(int score)
@@ -121,6 +118,7 @@ namespace Form1
                 File.WriteAllText(filePath, "StudentID,StudentName,Chapter,Score," +
                     "TotalQuestions,Grade,TimeTaken,Attempt,DateTime\n");
             }
+
             int attempt = GetAttemptNumber();
             int grade = CalculateGrade(score);
 
@@ -144,6 +142,12 @@ namespace Form1
             remainingSeconds = 300;
             questions = QuizState.SelectedQuestions;
             currentQuestionIndex = 0;
+
+            // prepare list to store answer for each question (default = -1)
+            userSelections = new List<int>(new int[questions.Count]);
+            for (int i = 0; i < userSelections.Count; i++)
+                userSelections[i] = -1;
+
             ShowCurrentQuestion();
         }
 
@@ -174,8 +178,15 @@ namespace Form1
 
             radioA.Checked = radioB.Checked = radioC.Checked = radioD.Checked = false;
 
+            // restore previous selected answer if exists
+            int previousSelection = userSelections[currentQuestionIndex];
+            if (previousSelection == 0) radioA.Checked = true;
+            else if (previousSelection == 1) radioB.Checked = true;
+            else if (previousSelection == 2) radioC.Checked = true;
+            else if (previousSelection == 3) radioD.Checked = true;
+
             // Hide Next button on last question
-            btnNext.Visible = (currentQuestionIndex < questions.Count - 1); // if last question, hide Next
+            btnNext.Visible = (currentQuestionIndex < questions.Count - 1);
         }
 
         private void quizTimer_Tick(object sender, EventArgs e)
@@ -190,7 +201,7 @@ namespace Form1
             {
                 quizTimer.Stop();
                 MessageBox.Show("Time's up! Quiz submitted automatically.", "Time Expired",
-                       MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 FinishQuiz();
             }
         }
@@ -209,7 +220,7 @@ namespace Form1
             int score = 0;
             for (int i = 0; i < questions.Count; i++)
             {
-                if (i < userSelections.Count && userSelections[i] == questions[i].CorrectIndex && userSelections[i] != -1)
+                if (userSelections[i] == questions[i].CorrectIndex && userSelections[i] != -1)
                 {
                     score++;
                 }
@@ -219,6 +230,63 @@ namespace Form1
             Result_Form resultForm = new Result_Form(score, finalTime);
             resultForm.Show();
             this.Hide();
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            int selected = -1;
+            if (radioA.Checked) selected = 0;
+            else if (radioB.Checked) selected = 1;
+            else if (radioC.Checked) selected = 2;
+            else if (radioD.Checked) selected = 3;
+
+            if (selected == -1)
+            {
+                MessageBox.Show("Please select an answer!");
+                return;
+            }
+
+            // save answer in its correct question position
+            userSelections[currentQuestionIndex] = selected;
+
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < questions.Count)
+                ShowCurrentQuestion();
+            else
+                FinishQuiz();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            if (currentQuestionIndex > 0)
+            {
+                currentQuestionIndex--;
+                ShowCurrentQuestion();
+            }
+
+            // show Next button again if user goes back from last question
+            btnNext.Visible = (currentQuestionIndex < questions.Count - 1);
+        }
+
+        private void btnExit_Click_1(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to exit the quiz?",
+                "Confirm Exit",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+                Application.Exit();
+            }
+        }
+
+        private void btnFinish_Click_1(object sender, EventArgs e)
+        {
+            FinishQuiz();
         }
 
         private void btnFinish_Paint(object sender, PaintEventArgs e)
@@ -238,14 +306,8 @@ namespace Form1
                 e.Graphics.FillPath(brush, path);
             }
 
-            TextRenderer.DrawText(
-                e.Graphics,
-                btn.Text,
-                btn.Font,
-                rect,
-                Color.White,
-                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
-            );
+            TextRenderer.DrawText(e.Graphics, btn.Text, btn.Font, rect, Color.White,
+                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
         }
 
         private void btnExit_Paint(object sender, PaintEventArgs e)
@@ -265,14 +327,8 @@ namespace Form1
                 e.Graphics.FillPath(brush, path);
             }
 
-            TextRenderer.DrawText(
-                e.Graphics,
-                btn.Text,
-                btn.Font,
-                rect,
-                Color.White,
-                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
-            );
+            TextRenderer.DrawText(e.Graphics, btn.Text, btn.Font, rect, Color.White,
+                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
         }
 
         private GraphicsPath GetRoundedPath(Rectangle rect, int radius)
@@ -289,91 +345,7 @@ namespace Form1
             return path;
         }
 
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-            int selected = -1;
-            if (radioA.Checked)
-                selected = 0;
-            else if (radioB.Checked)
-                selected = 1;
-            else if (radioC.Checked)
-                selected = 2;
-            else if (radioD.Checked)
-                selected = 3;
-
-            if (selected == -1)
-            {
-                MessageBox.Show("Please select an answer!");
-                return;
-            }
-
-            userSelections.Add(selected);
-            currentQuestionIndex++;
-
-            if (currentQuestionIndex < questions.Count)
-            {
-                ShowCurrentQuestion();
-            }
-            else
-            {
-                FinishQuiz();
-            }
-        }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            if (currentQuestionIndex > 0)
-            {
-                currentQuestionIndex--;
-                ShowCurrentQuestion();
-            }
-            else return;
-
-            int previousSelection = userSelections[currentQuestionIndex];
-            if (previousSelection != -1)
-            {
-                if (previousSelection == 0)
-                    radioA.Checked = true;
-                else if (previousSelection == 1)
-                    radioB.Checked = true;
-                else if (previousSelection == 2)
-                    radioC.Checked = true;
-                else if (previousSelection == 3)
-                    radioD.Checked = true;
-            }
-
-            // show Next button again if user goes back from last question
-            btnNext.Visible = (currentQuestionIndex < questions.Count - 1);
-        }
-
-        private void btnExit_Click_1(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show(
-                "Are you sure you want to exit the quiz?",
-                "Confirm Exit",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (result == DialogResult.Yes)
-            {
-                this.Close();
-                Application.Exit();
-            }
-        }
-
-        private void lblTimer_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void pnlQuestion_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        private void btnFinish_Click_1(object sender, EventArgs e)
-        {
-            FinishQuiz();
-        }
-
+        private void lblTimer_Click(object sender, EventArgs e) { }
+        private void pnlQuestion_Paint(object sender, PaintEventArgs e) { }
     }
 }
