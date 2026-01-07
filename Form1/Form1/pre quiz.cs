@@ -76,7 +76,15 @@ namespace Form1
             // MessageBox.Show($"Loading: {selectedChapter}");  // for debug
 
         }
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            // go back to user info form
+            User_Info user_Info = new User_Info();
+            user_Info.Show();
+            this.Hide();
+        }
 
+        //design code below
         private GraphicsPath GetRoundedPath(Rectangle rect, int radius)
         {
             GraphicsPath path = new GraphicsPath();
@@ -131,15 +139,6 @@ namespace Form1
                 Color.White,
                 TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
             );
-        }
-
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            // go back to user info form
-            User_Info user_Info = new User_Info();
-            user_Info.Show();
-            this.Hide();
         }
     }
 }
