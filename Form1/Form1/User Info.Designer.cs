@@ -50,7 +50,7 @@
             this.label1.Size = new System.Drawing.Size(174, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "Enter your name :";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            
             // 
             // label2
             // 
@@ -157,7 +157,6 @@
             this.pnlQuestion.Name = "pnlQuestion";
             this.pnlQuestion.Size = new System.Drawing.Size(705, 307);
             this.pnlQuestion.TabIndex = 8;
-            this.pnlQuestion.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlQuestion_Paint);
             // 
             // Form1
             // 
