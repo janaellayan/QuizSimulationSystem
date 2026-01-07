@@ -160,7 +160,6 @@
             // 
             this.radioB.AutoSize = true;
             this.radioB.Location = new System.Drawing.Point(42, 138);
-            this.radioB.Name = "radioB";
             this.radioB.Size = new System.Drawing.Size(75, 20);
             this.radioB.TabIndex = 4;
             this.radioB.TabStop = true;
