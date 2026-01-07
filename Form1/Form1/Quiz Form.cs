@@ -267,6 +267,15 @@ namespace Form1
             else if (radioD.Checked)
                 selected = 3;
             // now this works 10/10
+
+
+            if (selected == -1)
+            {
+                MessageBox.Show("Please select an answer!", "No answer selected",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             // adds the selected answer index to the list
             //userSelections.Add(selected);
             //currentQuestionIndex++;
@@ -276,14 +285,6 @@ namespace Form1
                 userSelections.Add(selected);
 
             currentQuestionIndex++;
-
-            // validation to ensure an answer is selected
-            if (selected == -1)
-            {
-                MessageBox.Show("Please select an answer!", "No answer selected",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
             if (currentQuestionIndex < questions.Count)
             {
