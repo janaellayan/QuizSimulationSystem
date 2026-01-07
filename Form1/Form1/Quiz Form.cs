@@ -132,6 +132,15 @@ namespace Form1
             questions = QuizState.SelectedQuestions;
             currentQuestionIndex = 0;
             ShowCurrentQuestion();
+
+            //so the first question is not preselected
+            this.BeginInvoke(new Action(() =>
+            {
+                radioA.Checked = false;
+                radioB.Checked = false;
+                radioC.Checked = false;
+                radioD.Checked = false;
+            }));
         }
 
 
@@ -141,6 +150,13 @@ namespace Form1
         {
             // if we still didnt load questions or if we are done with five questions
             if (questions == null || currentQuestionIndex >= questions.Count) return;
+
+            //for the first question not to be checked 
+            radioA.Checked = false;
+            radioB.Checked = false;
+            radioC.Checked = false;
+            radioD.Checked = false;
+
             Question q = questions[currentQuestionIndex];
 
             lblQnum.Text = $"Question {currentQuestionIndex + 1}/5"; // +1 because index starts from 0
