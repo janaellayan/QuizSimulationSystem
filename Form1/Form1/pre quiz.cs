@@ -48,6 +48,8 @@ namespace Form1
             // Mouse down / up to show pressed effect
             btnStartQuiz.MouseDown += (s, e) => { btnPressed = true; btnStartQuiz.Invalidate(); };
             btnStartQuiz.MouseUp += (s, e) => { btnPressed = false; btnStartQuiz.Invalidate(); };
+
+
         }
 
 

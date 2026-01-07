@@ -76,10 +76,28 @@ namespace Form1
         // Button click event to open second form
         private void btnStart_Click(object sender, EventArgs e)
         {
-            string selectedChapter = comboChapters.SelectedItem.ToString();
-
+            string selectedChapter = "";
             string studentName =txtName.Text;
             string studentID = txtID.Text;
+
+            try { 
+                if (comboChapters.SelectedIndex == -1)
+                {
+                    throw new Exception();
+                }
+                else
+                {
+                    selectedChapter = comboChapters.SelectedItem.ToString();
+                    selectedChapter = selectedChapter.ToLower();
+                }
+
+            }
+            catch (Exception) {
+                    MessageBox.Show("Choose a chapter. ", "Missing Input",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
 
             try
             {
@@ -93,6 +111,7 @@ namespace Form1
             {
                 MessageBox.Show("Name cannot be empty or anything other than letters. ", "Invalid Input",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             try
@@ -107,6 +126,7 @@ namespace Form1
             {
                 MessageBox.Show("ID number cannot be empty or anything other than numbers. ", "Invalid Input",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             // open only Form2 and pass selected chapter
