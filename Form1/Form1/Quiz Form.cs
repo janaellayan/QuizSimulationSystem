@@ -31,19 +31,6 @@ namespace Form1
         private List<int> userSelections = new List<int>();  //user choices to track the score 
         private int score = 0; // total as we run the code
 
-        bool AllQuestionsAnswered()
-        {
-            int answeredCount = 0;
-
-            foreach (int answer in userSelections)
-            {
-                if (answer != -1)
-                    answeredCount++;
-            }
-
-            return answeredCount == questions.Count;
-        }
-        //to check if all the questions are answered before submiting
 
         public Quiz_Form(string chapterName,string studentName,string studentID)
         {
@@ -230,7 +217,18 @@ namespace Form1
 
 
             //check if answers are correct
-            if (!AllQuestionsAnswered())
+            bool allAnswered = true;
+
+            foreach (int answer in userSelections)
+            {
+                if (answer == -1)
+                {
+                    allAnswered = false;
+                    break;
+                }
+            }
+
+            if (!allAnswered)
             {
                 MessageBox.Show(
                     "Please answer all questions before submitting the quiz.",
@@ -240,6 +238,7 @@ namespace Form1
                 );
                 return;
             }
+
 
             //confirmation message
             DialogResult result = MessageBox.Show(
