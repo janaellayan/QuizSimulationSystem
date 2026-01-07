@@ -87,7 +87,8 @@ namespace Form1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading quiz: " + ex.Message);
+                MessageBox.Show("Error loading quiz: " + ex.Message,"Quiz Loading Error",
+                    MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             // MessageBox.Show($"Loading: {selectedChapter}");  // for debug
 

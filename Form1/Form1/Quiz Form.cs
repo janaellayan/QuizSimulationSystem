@@ -31,6 +31,7 @@ namespace Form1
         private List<int> userSelections = new List<int>();  //user choices to track the score 
         private int score = 0; // total as we run the code
 
+
         public Quiz_Form(string chapterName,string studentName,string studentID)
         {
             InitializeComponent();
@@ -81,18 +82,6 @@ namespace Form1
 
         }
 
-        int CalculateGrade(int score)
-        {
-            double percent = (double)score / totalQuestions * 100;
-            if (percent >= 90) return 5;
-            if (percent >= 80) return 4;
-            if (percent >= 70) return 3;
-            if (percent >= 60) return 2;
-            if (percent >= 50) return 1;
-
-            return 0;
-        }
-
         int GetAttemptNumber()
         {
             string filepath = "QuizResults.csv";
@@ -121,7 +110,8 @@ namespace Form1
                     "TotalQuestions,Grade,TimeTaken,Attempt,DateTime\n");
             }
             int attempt=GetAttemptNumber();
-            int grade = CalculateGrade(score);
+            string grade = $"{score} out of {totalQuestions}";
+            //used the out of so excel dosent think its a date!
 
             string line=
                 studentID +","+
@@ -129,7 +119,7 @@ namespace Form1
                 chapterName +","+
                 score +","+
                 totalQuestions +","+
-                grade +"/5,"+
+                grade +","+
                 timeTaken +","+
                 attempt +","+
                 DateTime.Now.ToString("yyyy-MM-dd HH:mm") +"\n";
@@ -144,6 +134,15 @@ namespace Form1
             questions = QuizState.SelectedQuestions;
             currentQuestionIndex = 0;
             ShowCurrentQuestion();
+
+            //so the first question is not preselected
+            this.BeginInvoke(new Action(() =>
+            {
+                radioA.Checked = false;
+                radioB.Checked = false;
+                radioC.Checked = false;
+                radioD.Checked = false;
+            }));
         }
 
 
@@ -153,6 +152,13 @@ namespace Form1
         {
             // if we still didnt load questions or if we are done with five questions
             if (questions == null || currentQuestionIndex >= questions.Count) return;
+
+            //for the first question not to be checked 
+            radioA.Checked = false;
+            radioB.Checked = false;
+            radioC.Checked = false;
+            radioD.Checked = false;
+
             Question q = questions[currentQuestionIndex];
 
             lblQnum.Text = $"Question {currentQuestionIndex + 1}/5"; // +1 because index starts from 0
@@ -210,7 +216,60 @@ namespace Form1
 
         private void btnFinish_Click(object sender, EventArgs e)
         {
-            FinishQuiz();
+            //save the current questions answer
+            int selected = -1;
+
+            if (radioA.Checked)
+                selected = 0;
+            else if (radioB.Checked)
+                selected = 1;
+            else if (radioC.Checked)
+                selected = 2;
+            else if (radioD.Checked)
+                selected = 3;
+
+            if (userSelections.Count > currentQuestionIndex)
+                userSelections[currentQuestionIndex] = selected;
+            else
+                userSelections.Add(selected);
+
+
+            //check if answers are answered
+            bool allAnswered = true;
+
+            foreach (int answer in userSelections)
+            {
+                if (answer == -1)
+                {
+                    allAnswered = false;
+                    break;
+                }
+            }
+
+            if (!allAnswered)
+            {
+                MessageBox.Show(
+                    "Please answer all questions before submitting the quiz.",
+                    "Incomplete Quiz",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+
+            //confirmation message
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to submit the quiz?",
+                "Confirm Submission",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                FinishQuiz();
+            }
         }
 
         void FinishQuiz()
@@ -311,11 +370,6 @@ namespace Form1
             return path;
         }
 
-        private void btnFinish_Click_1(object sender, EventArgs e)
-        {
-            FinishQuiz(); 
-        }
-
         private void lblTimer_Click(object sender, EventArgs e)
         {
 
@@ -345,7 +399,8 @@ namespace Form1
             // validation to ensure an answer is selected
             if (selected == -1)
             {
-                MessageBox.Show("Please select an answer!");
+                MessageBox.Show("Please select an answer!","No answer selected",
+                    MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 return;
             }
 
@@ -359,7 +414,24 @@ namespace Form1
                 ShowCurrentQuestion();
             }
             else
-                FinishQuiz();
+            {
+                DialogResult result = MessageBox.Show(
+                    "This is the last question. Do you want to submit the quiz?",
+                    "Confirm Submission",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    FinishQuiz();
+                }
+                else
+                {
+                    currentQuestionIndex--; //goes back to the last question
+                    ShowCurrentQuestion();
+                }
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
