@@ -216,7 +216,7 @@ namespace Form1
                 userSelections.Add(selected);
 
 
-            //check if answers are correct
+            //check if answers are answered
             bool allAnswered = true;
 
             foreach (int answer in userSelections)
