@@ -18,7 +18,7 @@ namespace Form1
     public partial class Form2 : Form
     {
         // variable to track button pressed state
-        private bool btnPressed = false;
+        private bool btnPressed = false; 
         string selectedChapter;
         string studentName;
         string studentID;
@@ -32,21 +32,21 @@ namespace Form1
             this.studentID = studentID;
             lblSelectedChapter.Text = selectedChapter;
 
-            // Button basic design
+            // basic look
             btnStartQuiz.BackColor = Color.Transparent;
             btnStartQuiz.ForeColor = Color.White;
             btnStartQuiz.Font = new Font("Segoe UI", 12, FontStyle.Bold);
             btnStartQuiz.Width = 130;
             btnStartQuiz.Height = 50;
 
-            // Custom paint event for rounded + gradient button
+            // Custom paint method for rounded + gradient button
             btnStartQuiz.Paint += btnNext_Paint;
 
-            // Mouse enter / leave effect (hover)
+            // hover effect
             btnStartQuiz.MouseEnter += (s, e) => btnStartQuiz.BackColor = Color.SteelBlue;
             btnStartQuiz.MouseLeave += (s, e) => btnStartQuiz.BackColor = Color.DodgerBlue;
 
-            // Mouse down / up to show pressed effect
+            // pressed effect
             btnStartQuiz.MouseDown += (s, e) => { btnPressed = true; btnStartQuiz.Invalidate(); };
             btnStartQuiz.MouseUp += (s, e) => { btnPressed = false; btnStartQuiz.Invalidate(); };
 
@@ -121,7 +121,7 @@ namespace Form1
 
             Rectangle rect = btn.ClientRectangle;
 
-            // Change color if button is pressed
+            // Change color when button is pressed
             Color startColor = btnPressed ? Color.FromArgb(53, 122, 189) : Color.FromArgb(74, 144, 226);
             Color endColor = btnPressed ? Color.FromArgb(33, 102, 156) : Color.FromArgb(53, 122, 189);
 
@@ -139,7 +139,7 @@ namespace Form1
                 e.Graphics.FillPath(brush, path);
             }
 
-            // Move text a bit if pressed for 3D effect
+            // move text when pressed
             Point textLocation = new Point(rect.X, rect.Y);
             if (btnPressed)
                 textLocation.Offset(1, 1);

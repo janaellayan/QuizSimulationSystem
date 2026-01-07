@@ -65,6 +65,21 @@ namespace Form1
             btnFinish.MouseDown += (s, e) => { btnPressed = true; btnFinish.Invalidate(); };
             btnFinish.MouseUp += (s, e) => { btnPressed = false; btnFinish.Invalidate(); };
 
+            //Exit button design
+            btnExit.BackColor = Color.Transparent;
+            btnExit.ForeColor = Color.White;
+            btnExit.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnExit.Width = 130;
+            btnExit.Height = 50;
+
+            btnExit.Paint += btnExit_Paint;
+
+            btnExit.MouseEnter += (s, e) => btnExit.BackColor = Color.SteelBlue;
+            btnExit.MouseLeave += (s, e) => btnExit.BackColor = Color.DodgerBlue;
+
+            btnExit.MouseDown += (s, e) => { btnPressed = true; btnExit.Invalidate(); };
+            btnExit.MouseUp += (s, e) => { btnPressed = false; btnExit.Invalidate(); };
+
         }
 
         int GetAttemptNumber()
@@ -170,6 +185,9 @@ namespace Form1
 
             // clear previous selections
             radioA.Checked = radioB.Checked = radioC.Checked = radioD.Checked = false;
+
+            //hide btn next when we are on the last question 
+            btnNext.Visible = currentQuestionIndex < questions.Count - 1;
         }
 
         // the questionsdisplay one at a time, so that we deal with 4 radio buttons only per question

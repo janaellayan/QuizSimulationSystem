@@ -79,6 +79,58 @@ namespace Form1
             string selectedChapter = "";
             string studentName =txtName.Text;
             string studentID = txtID.Text;
+            string selectedChapter = comboChapters.SelectedItem?.ToString();
+
+
+            try
+            {
+                // checks for whitespaces, or any non-letter characters, while allowing spaces between names
+                if (string.IsNullOrEmpty(studentName) || !studentName.Any(char.IsLetter) || !studentName.All(c => char.IsLetter(c) || c == ' '))
+                {
+                    throw new Exception();
+                }
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Name cannot be empty or anything other than letters. ", "Invalid Input",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+            }
+
+
+            try
+            {
+                // if id is empty or has any characters that are not numbers ..show error
+                if (string.IsNullOrEmpty(studentID) || !int.TryParse(studentID, out _))
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please enter your ID and must be numbers only", "Invalid Input",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+            }
+
+
+            try
+            {
+                // if no chapter selected 
+                if (string.IsNullOrEmpty(selectedChapter))
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please select a chapter ", "Invalid Input", 
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+            }
 
             try { 
                 if (comboChapters.SelectedIndex == -1)
