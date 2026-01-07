@@ -64,7 +64,45 @@ namespace Form1
 
             string studentName =txtName.Text;
             string studentID = txtID.Text;
+            string selectedChapter = comboChapters.SelectedItem?.ToString();
 
+            //check if the name field is empty
+            if (string.IsNullOrEmpty(studentName))
+            {
+                MessageBox.Show("Please enter your name. ", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtName.Focus();
+                return;
+            }
+            //check if the name contain only letters and space
+            if (!studentName.All(c => char.IsLetter(c) || c==''))
+            {
+                MessageBox.Show("Name can only contain letters and spaces. ", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtName.Focus();
+                return;
+            }
+            //check if the id field is empty 
+            if (string.IsNullOrEmpty(studentID))
+            {
+                MessageBox.Show("Please enter your ID. ", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtID.Focus();
+                return;
+            }
+
+            //check if id contain number only 
+            if (string.IsNullOrEmpty(studentID, out _))
+            {
+                MessageBox.Show("ID must be numbers only. ", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtID.Focus();
+                return;
+            }
+
+            // check if a chapter is selected
+            if (string.IsNullOrEmpty(selectedChapter))
+            {
+                MessageBox.Show("Please select a chapter. ", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                comboChapters.Focus();
+                return;
+            }
 
             // open only Form2 and pass selected chapter
             Form2 form2 = new Form2(selectedChapter,studentName,studentID);
@@ -132,19 +170,7 @@ namespace Form1
 
         private void txtID_TextChanged(object sender, EventArgs e)
         {
-            String id = txtID.Text;
-            try
-            {
-                // checks for whitespaces, or any non-number characters
-                if (String.IsNullOrEmpty(id) || !int.TryParse(id, out int number))
-                {
-                    throw new Exception();
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("ID number cannot be empty or anything other than numbers. ", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+           
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -155,19 +181,7 @@ namespace Form1
         private void txtName_TextChanged(object sender, EventArgs e)
 
         {
-            this.Focus();
-            String name = txtName.Text;
-
-            try {
-                // checks for whitespaces, or any non-letter characters, while allowing spaces between names
-                if (String.IsNullOrEmpty(name) || !name.Any(char.IsLetter)|| !name.All(c => char.IsLetter(c) || c == ' '))
-                {
-                    throw new Exception();
-                }
-            }
-            catch (Exception) { 
-                MessageBox.Show("Name cannot be empty or anything other than letters. ", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+       
         }
 
         private void pnlQuestion_Paint(object sender, PaintEventArgs e)
