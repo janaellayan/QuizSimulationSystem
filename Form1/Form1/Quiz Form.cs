@@ -224,8 +224,8 @@ namespace Form1
                 timeTaken.Minutes.ToString("D2") + ":" +
                 timeTaken.Seconds.ToString("D2");
 
-            int score = 0;
-            for (int i = 0; i < questions.Count; i++)
+           int score = 0;
+           for (int i = 0; i < questions.Count; i++)
             {
                 if (i < userSelections.Count && userSelections[i] == questions[i].CorrectIndex && userSelections[i]!=-1)
                 {
@@ -340,9 +340,7 @@ namespace Form1
             else if (radioD.Checked)
                 selected = 3;
             // now this works 10/10
-            // adds the selected answer index to the list
-            userSelections.Add(selected);
-            currentQuestionIndex++;
+           
 
             // validation to ensure an answer is selected
             if (selected == -1)
@@ -350,6 +348,11 @@ namespace Form1
                 MessageBox.Show("Please select an answer!");
                 return;
             }
+
+            // adds the selected answer index to the list
+            userSelections.Add(selected);
+            currentQuestionIndex++;
+
 
             if (currentQuestionIndex < questions.Count)
             {

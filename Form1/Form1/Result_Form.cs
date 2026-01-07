@@ -21,7 +21,7 @@ namespace Form1
             InitializeComponent();
 
             lblScore.Text = score.ToString();
-            lblTime.Text = "Time: " + timeTaken;
+            lblTime.Text = timeTaken;
 
             // basic look
             btnExit.BackColor = Color.Transparent;
