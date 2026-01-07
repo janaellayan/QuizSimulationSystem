@@ -64,6 +64,21 @@ namespace Form1
             btnFinish.MouseDown += (s, e) => { btnPressed = true; btnFinish.Invalidate(); };
             btnFinish.MouseUp += (s, e) => { btnPressed = false; btnFinish.Invalidate(); };
 
+            //Exit button design
+            btnExit.BackColor = Color.Transparent;
+            btnExit.ForeColor = Color.White;
+            btnExit.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnExit.Width = 130;
+            btnExit.Height = 50;
+
+            btnExit.Paint += btnExit_Paint;
+
+            btnExit.MouseEnter += (s, e) => btnExit.BackColor = Color.SteelBlue;
+            btnExit.MouseLeave += (s, e) => btnExit.BackColor = Color.DodgerBlue;
+
+            btnExit.MouseDown += (s, e) => { btnPressed = true; btnExit.Invalidate(); };
+            btnExit.MouseUp += (s, e) => { btnPressed = false; btnExit.Invalidate(); };
+
         }
 
         int CalculateGrade(int score)
@@ -250,6 +265,35 @@ namespace Form1
             );
         }
 
+        private void btnExit_Paint(object sender, PaintEventArgs e)
+        {
+            Button btn = sender as Button;
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+            Rectangle rect = btn.ClientRectangle;
+
+            // Change color if button is pressed
+            Color startColor = btnPressed ? Color.FromArgb(53, 122, 189) : Color.DodgerBlue;
+            Color endColor = btnPressed ? Color.FromArgb(33, 102, 156) : Color.SteelBlue;
+
+            using (GraphicsPath path = GetRoundedPath(rect, 20))
+            using (LinearGradientBrush brush = new LinearGradientBrush(rect, startColor, endColor, LinearGradientMode.Horizontal))
+            {
+                btn.Region = new Region(path); // make button rounded
+                e.Graphics.FillPath(brush, path); // fill with gradient
+            }
+
+            // Draw text in center
+            TextRenderer.DrawText(
+                e.Graphics,
+                btn.Text,
+                btn.Font,
+                rect,
+                Color.White,
+                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
+            );
+        }
+
         private GraphicsPath GetRoundedPath(Rectangle rect, int radius)
         {
             GraphicsPath path = new GraphicsPath();
@@ -337,6 +381,19 @@ namespace Form1
                 else if (previousSelection == 3)
                     radioD.Checked = true;
             }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show( "Are you sure you want to exit the quiz?", "Confirm Exit",  MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question );
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+                Application.Exit();
+            }
+
         }
     }
 }

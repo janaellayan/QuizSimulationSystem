@@ -60,49 +60,62 @@ namespace Form1
         // Button click event to open second form
         private void btnStart_Click(object sender, EventArgs e)
         {
-            string selectedChapter = comboChapters.SelectedItem.ToString();
-
+            this.Focus();
             string studentName =txtName.Text;
             string studentID = txtID.Text;
             string selectedChapter = comboChapters.SelectedItem?.ToString();
 
-            //check if the name field is empty
-            if (string.IsNullOrEmpty(studentName))
+
+            try
             {
-                MessageBox.Show("Please enter your name. ", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtName.Focus();
-                return;
+                // checks for whitespaces, or any non-letter characters, while allowing spaces between names
+                if (string.IsNullOrEmpty(studentName) || !studentName.Any(char.IsLetter) || !studentName.All(c => char.IsLetter(c) || c == ' '))
+                {
+                    throw new Exception();
+                }
             }
-            //check if the name contain only letters and space
-            if (!studentName.All(c => char.IsLetter(c) || c==''))
+            catch(Exception)
             {
-                MessageBox.Show("Name can only contain letters and spaces. ", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtName.Focus();
+                MessageBox.Show("Name cannot be empty or anything other than letters. ", "Invalid Input",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }
-            //check if the id field is empty 
-            if (string.IsNullOrEmpty(studentID))
-            {
-                MessageBox.Show("Please enter your ID. ", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtID.Focus();
-                return;
+
             }
 
-            //check if id contain number only 
-            if (string.IsNullOrEmpty(studentID, out _))
+
+            try
             {
-                MessageBox.Show("ID must be numbers only. ", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtID.Focus();
+                // if id is empty or has any characters that are not numbers ..show error
+                if (string.IsNullOrEmpty(studentID) || !int.TryParse(studentID, out _))
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please enter your ID and must be numbers only", "Invalid Input",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+
             }
 
-            // check if a chapter is selected
-            if (string.IsNullOrEmpty(selectedChapter))
+
+            try
             {
-                MessageBox.Show("Please select a chapter. ", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                comboChapters.Focus();
-                return;
+                // if no chapter selected 
+                if (string.IsNullOrEmpty(selectedChapter))
+                {
+                    throw new Exception();
+                }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Please select a chapter ", "Invalid Input", 
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+            }
+
 
             // open only Form2 and pass selected chapter
             Form2 form2 = new Form2(selectedChapter,studentName,studentID);
