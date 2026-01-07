@@ -31,7 +31,7 @@ namespace Form1
         private List<int> userSelections = new List<int>();  //user choices to track the score 
         private int score = 0; // total as we run the code
 
-        public Quiz_Form(string chapterName,string studentName,string studentID)
+        public Quiz_Form(string chapterName, string studentName, string studentID)
         {
             InitializeComponent();
 
@@ -64,6 +64,22 @@ namespace Form1
             btnFinish.MouseDown += (s, e) => { btnPressed = true; btnFinish.Invalidate(); };
             btnFinish.MouseUp += (s, e) => { btnPressed = false; btnFinish.Invalidate(); };
 
+
+            // Exit button design (make it same as Finish)
+            btnExit.BackColor = Color.Transparent;
+            btnExit.ForeColor = Color.White;
+            btnExit.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnExit.Width = 130;
+            btnExit.Height = 50;
+
+            btnExit.Paint += btnExit_Paint;
+
+            btnExit.MouseEnter += (s, e) => btnExit.BackColor = Color.SteelBlue;
+            btnExit.MouseLeave += (s, e) => btnExit.BackColor = Color.DodgerBlue;
+
+            btnExit.MouseDown += (s, e) => { btnPressed = true; btnExit.Invalidate(); };
+            btnExit.MouseUp += (s, e) => { btnPressed = false; btnExit.Invalidate(); };
+
         }
 
         int CalculateGrade(int score)
@@ -81,22 +97,22 @@ namespace Form1
         int GetAttemptNumber()
         {
             string filepath = "QuizResults.csv";
-             if(!File.Exists(filepath)) return 1;
+            if (!File.Exists(filepath)) return 1;
 
             int attempts = 0;
-            string[] lines =File.ReadAllLines(filepath);
+            string[] lines = File.ReadAllLines(filepath);
 
             foreach (string line in lines)
             {
-                if(line.StartsWith(studentID+",") && line.Contains("," + chapterName + ","))
+                if (line.StartsWith(studentID + ",") && line.Contains("," + chapterName + ","))
                 {
                     attempts++;
                 }
             }
-            return attempts +1;
+            return attempts + 1;
         }
 
-        void saveResultToCSV(int score,string timeTaken)
+        void saveResultToCSV(int score, string timeTaken)
         {
             string filePath = "QuizResults.csv";
 
@@ -105,19 +121,19 @@ namespace Form1
                 File.WriteAllText(filePath, "StudentID,StudentName,Chapter,Score," +
                     "TotalQuestions,Grade,TimeTaken,Attempt,DateTime\n");
             }
-            int attempt=GetAttemptNumber();
+            int attempt = GetAttemptNumber();
             int grade = CalculateGrade(score);
 
-            string line=
-                studentID +","+
-                studentName +","+
-                chapterName +","+
-                score +","+
-                totalQuestions +","+
-                grade +"/5,"+
-                timeTaken +","+
-                attempt +","+
-                DateTime.Now.ToString("yyyy-MM-dd HH:mm") +"\n";
+            string line =
+                studentID + "," +
+                studentName + "," +
+                chapterName + "," +
+                score + "," +
+                totalQuestions + "," +
+                grade + "/5," +
+                timeTaken + "," +
+                attempt + "," +
+                DateTime.Now.ToString("yyyy-MM-dd HH:mm") + "\n";
 
             File.AppendAllText(filePath, line);
         }
@@ -131,24 +147,18 @@ namespace Form1
             ShowCurrentQuestion();
         }
 
-
-
-        //questions display method
         private void ShowCurrentQuestion()
         {
-            // if we still didnt load questions or if we are done with five questions
             if (questions == null || currentQuestionIndex >= questions.Count) return;
             Question q = questions[currentQuestionIndex];
 
-            lblQnum.Text = $"Question {currentQuestionIndex + 1}/5"; // +1 because index starts from 0
-            lblQtext.Text = q.Text;  // maiin question text
+            lblQnum.Text = $"Question {currentQuestionIndex + 1}/5";
+            lblQtext.Text = q.Text;
 
-            //there are four radio buttons always
-            // if the question is true/false we only use two and the other two are hidden 
             if (q.Type == QuestionType.TrueFalse)
             {
-                radioA.Text = q.Options[0];  // True
-                radioB.Text = q.Options[1];  // False
+                radioA.Text = q.Options[0];
+                radioB.Text = q.Options[1];
                 radioC.Visible = false;
                 radioD.Visible = false;
                 radioA.Visible = radioB.Visible = true;
@@ -162,25 +172,20 @@ namespace Form1
                 radioA.Visible = radioB.Visible = radioC.Visible = radioD.Visible = true;
             }
 
-            // clear previous selections
             radioA.Checked = radioB.Checked = radioC.Checked = radioD.Checked = false;
-        }
 
-        // the questionsdisplay one at a time, so that we deal with 4 radio buttons only per question
-        // 4 buttons * five questions = 20 buttons total
-        // messy, so we do it this way
+            // Hide Next button on last question
+            btnNext.Visible = (currentQuestionIndex < questions.Count - 1); // if last question, hide Next
+        }
 
         private void quizTimer_Tick(object sender, EventArgs e)
         {
-            // decrease time every second
             remainingSeconds--;
 
             int minutes = remainingSeconds / 60;
             int seconds = remainingSeconds % 60;
-            //update timer label
             lblTimer.Text = minutes.ToString("D2") + ":" + seconds.ToString("D2");
 
-            //if time finish
             if (remainingSeconds <= 0)
             {
                 quizTimer.Stop();
@@ -190,17 +195,12 @@ namespace Form1
             }
         }
 
-        private void btnFinish_Click(object sender, EventArgs e)
-        {
-            FinishQuiz();
-        }
-
         void FinishQuiz()
         {
             quizTimer.Stop();
 
-            DateTime quizEndTime = DateTime.Now; // end time
-            TimeSpan timeTaken = quizEndTime - quizStartTime; // calculate time taken
+            DateTime quizEndTime = DateTime.Now;
+            TimeSpan timeTaken = quizEndTime - quizStartTime;
 
             string finalTime =
                 timeTaken.Minutes.ToString("D2") + ":" +
@@ -209,7 +209,7 @@ namespace Form1
             int score = 0;
             for (int i = 0; i < questions.Count; i++)
             {
-                if (i < userSelections.Count && userSelections[i] == questions[i].CorrectIndex && userSelections[i]!=-1)
+                if (i < userSelections.Count && userSelections[i] == questions[i].CorrectIndex && userSelections[i] != -1)
                 {
                     score++;
                 }
@@ -228,18 +228,43 @@ namespace Form1
 
             Rectangle rect = btn.ClientRectangle;
 
-            // Change color if button is pressed
             Color startColor = btnPressed ? Color.FromArgb(53, 122, 189) : Color.DodgerBlue;
             Color endColor = btnPressed ? Color.FromArgb(33, 102, 156) : Color.SteelBlue;
 
             using (GraphicsPath path = GetRoundedPath(rect, 20))
             using (LinearGradientBrush brush = new LinearGradientBrush(rect, startColor, endColor, LinearGradientMode.Horizontal))
             {
-                btn.Region = new Region(path); // make button rounded
-                e.Graphics.FillPath(brush, path); // fill with gradient
+                btn.Region = new Region(path);
+                e.Graphics.FillPath(brush, path);
             }
 
-            // Draw text in center
+            TextRenderer.DrawText(
+                e.Graphics,
+                btn.Text,
+                btn.Font,
+                rect,
+                Color.White,
+                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
+            );
+        }
+
+        private void btnExit_Paint(object sender, PaintEventArgs e)
+        {
+            Button btn = sender as Button;
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+            Rectangle rect = btn.ClientRectangle;
+
+            Color startColor = btnPressed ? Color.FromArgb(53, 122, 189) : Color.DodgerBlue;
+            Color endColor = btnPressed ? Color.FromArgb(33, 102, 156) : Color.SteelBlue;
+
+            using (GraphicsPath path = GetRoundedPath(rect, 20))
+            using (LinearGradientBrush brush = new LinearGradientBrush(rect, startColor, endColor, LinearGradientMode.Horizontal))
+            {
+                btn.Region = new Region(path);
+                e.Graphics.FillPath(brush, path);
+            }
+
             TextRenderer.DrawText(
                 e.Graphics,
                 btn.Text,
@@ -255,34 +280,17 @@ namespace Form1
             GraphicsPath path = new GraphicsPath();
             int d = radius * 2;
 
-            path.AddArc(rect.X, rect.Y, d, d, 180, 90); // top-left
-            path.AddArc(rect.Right - d, rect.Y, d, d, 270, 90); // top-right
-            path.AddArc(rect.Right - d, rect.Bottom - d, d, d, 0, 90); // bottom-right
-            path.AddArc(rect.X, rect.Bottom - d, d, d, 90, 90); // bottom-left
+            path.AddArc(rect.X, rect.Y, d, d, 180, 90);
+            path.AddArc(rect.Right - d, rect.Y, d, d, 270, 90);
+            path.AddArc(rect.Right - d, rect.Bottom - d, d, d, 0, 90);
+            path.AddArc(rect.X, rect.Bottom - d, d, d, 90, 90);
 
             path.CloseFigure();
             return path;
         }
 
-        private void btnFinish_Click_1(object sender, EventArgs e)
-        {
-            FinishQuiz(); 
-        }
-
-        private void lblTimer_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnlQuestion_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void btnNext_Click(object sender, EventArgs e)
         {
-            // answer index
-            // here we record the answer before moving to next question
             int selected = -1;
             if (radioA.Checked)
                 selected = 0;
@@ -292,24 +300,24 @@ namespace Form1
                 selected = 2;
             else if (radioD.Checked)
                 selected = 3;
-            // now this works 10/10
-            // adds the selected answer index to the list
-            userSelections.Add(selected);
-            currentQuestionIndex++;
 
-            // validation to ensure an answer is selected
             if (selected == -1)
             {
                 MessageBox.Show("Please select an answer!");
                 return;
             }
 
+            userSelections.Add(selected);
+            currentQuestionIndex++;
+
             if (currentQuestionIndex < questions.Count)
             {
                 ShowCurrentQuestion();
             }
             else
+            {
                 FinishQuiz();
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -319,14 +327,10 @@ namespace Form1
                 currentQuestionIndex--;
                 ShowCurrentQuestion();
             }
-            else return; // no going back from question 1
-            //fixed a big issue here
+            else return;
 
-            // restore the last answer 
-            // without this part, the back button will shpw empty selections always
-            // confusing for users and bad UX
             int previousSelection = userSelections[currentQuestionIndex];
-            if (previousSelection != -1)   // if they answered this ome and didn't leave it empty
+            if (previousSelection != -1)
             {
                 if (previousSelection == 0)
                     radioA.Checked = true;
@@ -337,6 +341,39 @@ namespace Form1
                 else if (previousSelection == 3)
                     radioD.Checked = true;
             }
+
+            // show Next button again if user goes back from last question
+            btnNext.Visible = (currentQuestionIndex < questions.Count - 1);
         }
+
+        private void btnExit_Click_1(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to exit the quiz?",
+                "Confirm Exit",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+                Application.Exit();
+            }
+        }
+
+        private void lblTimer_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void pnlQuestion_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void btnFinish_Click_1(object sender, EventArgs e)
+        {
+            FinishQuiz();
+        }
+
     }
 }
