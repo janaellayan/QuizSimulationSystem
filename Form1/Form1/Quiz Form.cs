@@ -271,6 +271,89 @@ namespace Form1
                 FinishQuiz();
             }
         }
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            // answer index
+            // here we record the answer before moving to next question
+            int selected = -1;
+            if (radioA.Checked)
+                selected = 0;
+            else if (radioB.Checked)
+                selected = 1;
+            else if (radioC.Checked)
+                selected = 2;
+            else if (radioD.Checked)
+                selected = 3;
+            // now this works 10/10
+
+
+            if (selected == -1)
+            {
+                MessageBox.Show("Please select an answer!", "No answer selected",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // adds the selected answer index to the list
+            //userSelections.Add(selected);
+            //currentQuestionIndex++;
+            if (userSelections.Count > currentQuestionIndex)
+                userSelections[currentQuestionIndex] = selected;
+            else
+                userSelections.Add(selected);
+
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < questions.Count)
+            {
+                ShowCurrentQuestion();
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show(
+                    "This is the last question. Do you want to submit the quiz?",
+                    "Confirm Submission",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    FinishQuiz();
+                }
+                else
+                {
+                    currentQuestionIndex--; //goes back to the last question
+                    ShowCurrentQuestion();
+                }
+            }
+        }
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            if (currentQuestionIndex > 0)
+            {
+                currentQuestionIndex--;
+                ShowCurrentQuestion();
+            }
+            else return; // no going back from question 1
+            //fixed a big issue here
+
+            // restore the last answer 
+            // without this part, the back button will shpw empty selections always
+            // confusing for users and bad UX
+            int previousSelection = userSelections[currentQuestionIndex];
+            if (previousSelection != -1)   // if they answered this ome and didn't leave it empty
+            {
+                if (previousSelection == 0)
+                    radioA.Checked = true;
+                else if (previousSelection == 1)
+                    radioB.Checked = true;
+                else if (previousSelection == 2)
+                    radioC.Checked = true;
+                else if (previousSelection == 3)
+                    radioD.Checked = true;
+            }
+        }
 
         void FinishQuiz()
         {
@@ -283,8 +366,8 @@ namespace Form1
                 timeTaken.Minutes.ToString("D2") + ":" +
                 timeTaken.Seconds.ToString("D2");
 
-           int score = 0;
-           for (int i = 0; i < questions.Count; i++)
+            int score = 0;
+            for (int i = 0; i < questions.Count; i++)
             {
                 if (i < userSelections.Count && userSelections[i] == questions[i].CorrectIndex && userSelections[i]!=-1)
                 {
@@ -298,36 +381,8 @@ namespace Form1
             this.Hide();
         }
 
+        //design code below
         private void btnFinish_Paint(object sender, PaintEventArgs e)
-        {
-            Button btn = sender as Button;
-            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-
-            Rectangle rect = btn.ClientRectangle;
-
-            // Change color if button is pressed
-            Color startColor = btnPressed ? Color.FromArgb(53, 122, 189) : Color.DodgerBlue;
-            Color endColor = btnPressed ? Color.FromArgb(33, 102, 156) : Color.SteelBlue;
-
-            using (GraphicsPath path = GetRoundedPath(rect, 20))
-            using (LinearGradientBrush brush = new LinearGradientBrush(rect, startColor, endColor, LinearGradientMode.Horizontal))
-            {
-                btn.Region = new Region(path); // make button rounded
-                e.Graphics.FillPath(brush, path); // fill with gradient
-            }
-
-            // Draw text in center
-            TextRenderer.DrawText(
-                e.Graphics,
-                btn.Text,
-                btn.Font,
-                rect,
-                Color.White,
-                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
-            );
-        }
-
-        private void btnExit_Paint(object sender, PaintEventArgs e)
         {
             Button btn = sender as Button;
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
@@ -370,108 +425,5 @@ namespace Form1
             return path;
         }
 
-        private void lblTimer_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnlQuestion_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-            // answer index
-            // here we record the answer before moving to next question
-            int selected = -1;
-            if (radioA.Checked)
-                selected = 0;
-            else if (radioB.Checked)
-                selected = 1;
-            else if (radioC.Checked)
-                selected = 2;
-            else if (radioD.Checked)
-                selected = 3;
-            // now this works 10/10
-           
-
-            // validation to ensure an answer is selected
-            if (selected == -1)
-            {
-                MessageBox.Show("Please select an answer!","No answer selected",
-                    MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                return;
-            }
-
-            // adds the selected answer index to the list
-            userSelections.Add(selected);
-            currentQuestionIndex++;
-
-
-            if (currentQuestionIndex < questions.Count)
-            {
-                ShowCurrentQuestion();
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show(
-                    "This is the last question. Do you want to submit the quiz?",
-                    "Confirm Submission",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question
-                );
-
-                if (result == DialogResult.Yes)
-                {
-                    FinishQuiz();
-                }
-                else
-                {
-                    currentQuestionIndex--; //goes back to the last question
-                    ShowCurrentQuestion();
-                }
-            }
-        }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            if (currentQuestionIndex > 0)
-            {
-                currentQuestionIndex--;
-                ShowCurrentQuestion();
-            }
-            else return; // no going back from question 1
-            //fixed a big issue here
-
-            // restore the last answer 
-            // without this part, the back button will shpw empty selections always
-            // confusing for users and bad UX
-            int previousSelection = userSelections[currentQuestionIndex];
-            if (previousSelection != -1)   // if they answered this ome and didn't leave it empty
-            {
-                if (previousSelection == 0)
-                    radioA.Checked = true;
-                else if (previousSelection == 1)
-                    radioB.Checked = true;
-                else if (previousSelection == 2)
-                    radioC.Checked = true;
-                else if (previousSelection == 3)
-                    radioD.Checked = true;
-            }
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show( "Are you sure you want to exit the quiz?", "Confirm Exit",  MessageBoxButtons.YesNo,
-            MessageBoxIcon.Question );
-
-            if (result == DialogResult.Yes)
-            {
-                this.Close();
-                Application.Exit();
-            }
-
-        }
     }
 }

@@ -22,14 +22,15 @@ namespace Form1
         string selectedChapter;
         string studentName;
         string studentID;
+        private bool btnBackPressed;
 
-        public Form2(string chapter,string studentName,string studentID)
+        public Form2(string chapter, string studentName, string studentID)
         {
             InitializeComponent();
             selectedChapter = chapter;
-            this.studentName =studentName;
-            this.studentID =studentID;
-            lblSelectedChapter.Text =  selectedChapter;
+            this.studentName = studentName;
+            this.studentID = studentID;
+            lblSelectedChapter.Text = selectedChapter;
 
             // basic look
             btnStartQuiz.BackColor = Color.Transparent;
@@ -49,24 +50,20 @@ namespace Form1
             btnStartQuiz.MouseDown += (s, e) => { btnPressed = true; btnStartQuiz.Invalidate(); };
             btnStartQuiz.MouseUp += (s, e) => { btnPressed = false; btnStartQuiz.Invalidate(); };
 
-            // Same for btn back 
+
             btnBack.BackColor = Color.Transparent;
             btnBack.ForeColor = Color.White;
             btnBack.Font = new Font("Segoe UI", 12, FontStyle.Bold);
             btnBack.Width = 130;
             btnBack.Height = 50;
 
-            btnBack.Paint += btnNext_Paint;
+            btnBack.Paint += btnBack_Paint;
             btnBack.MouseEnter += (s, e) => btnBack.BackColor = Color.SteelBlue;
             btnBack.MouseLeave += (s, e) => btnBack.BackColor = Color.DodgerBlue;
-            btnBack.MouseDown += (s, e) => { btnPressed = true; btnBack.Invalidate(); };
-            btnBack.MouseUp += (s, e) => { btnPressed = false; btnBack.Invalidate(); };
-        }
-
-        private void Form2_Load(object sender, EventArgs e)
-        {
+            btnBack.MouseDown += (s, e) => { btnBackPressed = true; btnBack.Invalidate(); };
 
         }
+
 
         private void btnStartQuiz_Click(object sender, EventArgs e)
         {
@@ -87,13 +84,21 @@ namespace Form1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading quiz: " + ex.Message,"Quiz Loading Error",
-                    MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Error loading quiz: " + ex.Message, "Quiz Loading Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             // MessageBox.Show($"Loading: {selectedChapter}");  // for debug
 
         }
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            // go back to user info form
+            User_Info user_Info = new User_Info();
+            user_Info.Show();
+            this.Hide();
+        }
 
+        //design code below
         private GraphicsPath GetRoundedPath(Rectangle rect, int radius)
         {
             GraphicsPath path = new GraphicsPath();
@@ -149,8 +154,6 @@ namespace Form1
                 TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
             );
         }
-
-
         private void btnBack_Paint(object sender, PaintEventArgs e)
         {
             Button btn = sender as Button;
@@ -158,9 +161,9 @@ namespace Form1
 
             Rectangle rect = btn.ClientRectangle;
 
-            // Change color when button is pressed
-            Color startColor = btnPressed ? Color.FromArgb(53, 122, 189) : Color.FromArgb(74, 144, 226);
-            Color endColor = btnPressed ? Color.FromArgb(33, 102, 156) : Color.FromArgb(53, 122, 189);
+            // Change color if button is pressed
+            Color startColor = btnBackPressed ? Color.FromArgb(53, 122, 189) : Color.FromArgb(74, 144, 226);
+            Color endColor = btnBackPressed ? Color.FromArgb(33, 102, 156) : Color.FromArgb(53, 122, 189);
 
             using (GraphicsPath path = GetRoundedPath(rect, 22))
             using (LinearGradientBrush brush = new LinearGradientBrush(
@@ -176,9 +179,9 @@ namespace Form1
                 e.Graphics.FillPath(brush, path);
             }
 
-            // move text when pressed
+            // Move text a bit if pressed for 3D effect
             Point textLocation = new Point(rect.X, rect.Y);
-            if (btnPressed)
+            if (btnBackPressed)
                 textLocation.Offset(1, 1);
 
             // Draw text in center
@@ -190,13 +193,7 @@ namespace Form1
                 Color.White,
                 TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
             );
-        }
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            // go back to user info form
-            User_Info user_Info = new User_Info();
-            user_Info.Show();
-            this.Hide();
+
         }
     }
 }

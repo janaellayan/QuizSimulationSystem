@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Form1
 {
@@ -15,6 +16,9 @@ namespace Form1
     {
         // variable to track button pressed state
         private bool btnPressed = false;
+        String name= "";
+        String id = "";
+
 
         public User_Info()
         {
@@ -57,10 +61,22 @@ namespace Form1
             comboChapters.SelectedIndex = -1;
         }
 
+        private void txtID_TextChanged(object sender, EventArgs e)
+        {
+            id = txtID.Text;
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+
+        {
+            this.Focus();
+            name = txtName.Text;
+        }
+
         // Button click event to open second form
         private void btnStart_Click(object sender, EventArgs e)
         {
-            this.Focus();
+            string selectedChapter = "";
             string studentName =txtName.Text;
             string studentID = txtID.Text;
             string selectedChapter = comboChapters.SelectedItem?.ToString();
@@ -116,9 +132,57 @@ namespace Form1
 
             }
 
+            try { 
+                if (comboChapters.SelectedIndex == -1)
+                {
+                    throw new Exception();
+                }
+                else
+                {
+                    selectedChapter = comboChapters.SelectedItem.ToString();
+                    selectedChapter = selectedChapter.ToLower();
+                }
+
+            }
+            catch (Exception) {
+                    MessageBox.Show("Choose a chapter. ", "Missing Input",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            try
+            {
+                // checks for whitespaces, or any non-letter characters, while allowing spaces between names
+                if (String.IsNullOrEmpty(name) || !name.Any(char.IsLetter) || !name.All(c => char.IsLetter(c) || c == ' '))
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Name cannot be empty or anything other than letters. ", "Invalid Input",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                // checks for whitespaces, or any non-number characters
+                if (String.IsNullOrEmpty(id) || !int.TryParse(id, out int number))
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ID number cannot be empty or anything other than numbers. ", "Invalid Input",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             // open only Form2 and pass selected chapter
-            Form2 form2 = new Form2(selectedChapter,studentName,studentID);
+            Form2 form2 = new Form2(selectedChapter, studentName, studentID);
             form2.Show();
             this.Hide();
         }
@@ -181,25 +245,5 @@ namespace Form1
             );
         }
 
-        private void txtID_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtName_TextChanged(object sender, EventArgs e)
-
-        {
-       
-        }
-
-        private void pnlQuestion_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
