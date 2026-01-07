@@ -58,7 +58,6 @@
             this.lblTimer.Size = new System.Drawing.Size(132, 32);
             this.lblTimer.TabIndex = 0;
             this.lblTimer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblTimer.Click += new System.EventHandler(this.lblTimer_Click);
             // 
             // pnlQuestion
             // 
@@ -76,7 +75,6 @@
             this.pnlQuestion.Name = "pnlQuestion";
             this.pnlQuestion.Size = new System.Drawing.Size(831, 304);
             this.pnlQuestion.TabIndex = 2;
-            this.pnlQuestion.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlQuestion_Paint);
             // 
             // vScrollBar1
             // 
