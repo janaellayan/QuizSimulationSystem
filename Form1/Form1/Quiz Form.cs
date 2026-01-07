@@ -65,6 +65,21 @@ namespace Form1
             btnFinish.MouseDown += (s, e) => { btnPressed = true; btnFinish.Invalidate(); };
             btnFinish.MouseUp += (s, e) => { btnPressed = false; btnFinish.Invalidate(); };
 
+            //Exit button design
+            btnExit.BackColor = Color.Transparent;
+            btnExit.ForeColor = Color.White;
+            btnExit.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnExit.Width = 130;
+            btnExit.Height = 50;
+
+            btnExit.Paint += btnExit_Paint;
+
+            btnExit.MouseEnter += (s, e) => btnExit.BackColor = Color.SteelBlue;
+            btnExit.MouseLeave += (s, e) => btnExit.BackColor = Color.DodgerBlue;
+
+            btnExit.MouseDown += (s, e) => { btnPressed = true; btnExit.Invalidate(); };
+            btnExit.MouseUp += (s, e) => { btnPressed = false; btnExit.Invalidate(); };
+
         }
 
         int GetAttemptNumber()
@@ -170,6 +185,9 @@ namespace Form1
 
             // clear previous selections
             radioA.Checked = radioB.Checked = radioC.Checked = radioD.Checked = false;
+
+            //hide btn next when we are on the last question 
+            btnNext.Visible = currentQuestionIndex < questions.Count - 1;
         }
 
         // the questionsdisplay one at a time, so that we deal with 4 radio buttons only per question
@@ -265,8 +283,8 @@ namespace Form1
                 timeTaken.Minutes.ToString("D2") + ":" +
                 timeTaken.Seconds.ToString("D2");
 
-            int score = 0;
-            for (int i = 0; i < questions.Count; i++)
+           int score = 0;
+           for (int i = 0; i < questions.Count; i++)
             {
                 if (i < userSelections.Count && userSelections[i] == questions[i].CorrectIndex && userSelections[i]!=-1)
                 {
@@ -281,6 +299,35 @@ namespace Form1
         }
 
         private void btnFinish_Paint(object sender, PaintEventArgs e)
+        {
+            Button btn = sender as Button;
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+            Rectangle rect = btn.ClientRectangle;
+
+            // Change color if button is pressed
+            Color startColor = btnPressed ? Color.FromArgb(53, 122, 189) : Color.DodgerBlue;
+            Color endColor = btnPressed ? Color.FromArgb(33, 102, 156) : Color.SteelBlue;
+
+            using (GraphicsPath path = GetRoundedPath(rect, 20))
+            using (LinearGradientBrush brush = new LinearGradientBrush(rect, startColor, endColor, LinearGradientMode.Horizontal))
+            {
+                btn.Region = new Region(path); // make button rounded
+                e.Graphics.FillPath(brush, path); // fill with gradient
+            }
+
+            // Draw text in center
+            TextRenderer.DrawText(
+                e.Graphics,
+                btn.Text,
+                btn.Font,
+                rect,
+                Color.White,
+                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
+            );
+        }
+
+        private void btnExit_Paint(object sender, PaintEventArgs e)
         {
             Button btn = sender as Button;
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
@@ -347,15 +394,7 @@ namespace Form1
             else if (radioD.Checked)
                 selected = 3;
             // now this works 10/10
-            // adds the selected answer index to the list
-            //userSelections.Add(selected);
-            //currentQuestionIndex++;
-            if (userSelections.Count > currentQuestionIndex)
-                userSelections[currentQuestionIndex] = selected;
-            else
-                userSelections.Add(selected);
-
-            currentQuestionIndex++;
+           
 
             // validation to ensure an answer is selected
             if (selected == -1)
@@ -364,6 +403,11 @@ namespace Form1
                     MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 return;
             }
+
+            // adds the selected answer index to the list
+            userSelections.Add(selected);
+            currentQuestionIndex++;
+
 
             if (currentQuestionIndex < questions.Count)
             {
@@ -415,6 +459,19 @@ namespace Form1
                 else if (previousSelection == 3)
                     radioD.Checked = true;
             }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show( "Are you sure you want to exit the quiz?", "Confirm Exit",  MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question );
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+                Application.Exit();
+            }
+
         }
     }
 }

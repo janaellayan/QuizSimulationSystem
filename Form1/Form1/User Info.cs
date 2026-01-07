@@ -60,10 +60,61 @@ namespace Form1
         // Button click event to open second form
         private void btnStart_Click(object sender, EventArgs e)
         {
-            string selectedChapter = comboChapters.SelectedItem.ToString();
-
+            this.Focus();
             string studentName =txtName.Text;
             string studentID = txtID.Text;
+            string selectedChapter = comboChapters.SelectedItem?.ToString();
+
+
+            try
+            {
+                // checks for whitespaces, or any non-letter characters, while allowing spaces between names
+                if (string.IsNullOrEmpty(studentName) || !studentName.Any(char.IsLetter) || !studentName.All(c => char.IsLetter(c) || c == ' '))
+                {
+                    throw new Exception();
+                }
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Name cannot be empty or anything other than letters. ", "Invalid Input",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+            }
+
+
+            try
+            {
+                // if id is empty or has any characters that are not numbers ..show error
+                if (string.IsNullOrEmpty(studentID) || !int.TryParse(studentID, out _))
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please enter your ID and must be numbers only", "Invalid Input",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+            }
+
+
+            try
+            {
+                // if no chapter selected 
+                if (string.IsNullOrEmpty(selectedChapter))
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please select a chapter ", "Invalid Input", 
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+            }
 
 
             // open only Form2 and pass selected chapter
@@ -132,20 +183,7 @@ namespace Form1
 
         private void txtID_TextChanged(object sender, EventArgs e)
         {
-            String id = txtID.Text;
-            try
-            {
-                // checks for whitespaces, or any non-number characters
-                if (String.IsNullOrEmpty(id) || !int.TryParse(id, out int number))
-                {
-                    throw new Exception();
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("ID number cannot be empty or anything other than numbers. ", "Invalid Input", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+           
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -156,20 +194,7 @@ namespace Form1
         private void txtName_TextChanged(object sender, EventArgs e)
 
         {
-            this.Focus();
-            String name = txtName.Text;
-
-            try {
-                // checks for whitespaces, or any non-letter characters, while allowing spaces between names
-                if (String.IsNullOrEmpty(name) || !name.Any(char.IsLetter)|| !name.All(c => char.IsLetter(c) || c == ' '))
-                {
-                    throw new Exception();
-                }
-            }
-            catch (Exception) { 
-                MessageBox.Show("Name cannot be empty or anything other than letters. ", "Invalid Input", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+       
         }
 
         private void pnlQuestion_Paint(object sender, PaintEventArgs e)

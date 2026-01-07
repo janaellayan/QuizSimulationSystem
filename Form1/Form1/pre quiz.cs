@@ -18,7 +18,7 @@ namespace Form1
     public partial class Form2 : Form
     {
         // variable to track button pressed state
-        private bool btnPressed = false;
+        private bool btnPressed = false; 
         string selectedChapter;
         string studentName;
         string studentID;
@@ -31,23 +31,36 @@ namespace Form1
             this.studentID =studentID;
             lblSelectedChapter.Text =  selectedChapter;
 
-            // Button basic design
+            // basic look
             btnStartQuiz.BackColor = Color.Transparent;
             btnStartQuiz.ForeColor = Color.White;
             btnStartQuiz.Font = new Font("Segoe UI", 12, FontStyle.Bold);
             btnStartQuiz.Width = 130;
             btnStartQuiz.Height = 50;
 
-            // Custom paint event for rounded + gradient button
+            // Custom paint method for rounded + gradient button
             btnStartQuiz.Paint += btnNext_Paint;
 
-            // Mouse enter / leave effect (hover)
+            // hover effect
             btnStartQuiz.MouseEnter += (s, e) => btnStartQuiz.BackColor = Color.SteelBlue;
             btnStartQuiz.MouseLeave += (s, e) => btnStartQuiz.BackColor = Color.DodgerBlue;
 
-            // Mouse down / up to show pressed effect
+            // pressed effect
             btnStartQuiz.MouseDown += (s, e) => { btnPressed = true; btnStartQuiz.Invalidate(); };
             btnStartQuiz.MouseUp += (s, e) => { btnPressed = false; btnStartQuiz.Invalidate(); };
+
+            // Same for btn back 
+            btnBack.BackColor = Color.Transparent;
+            btnBack.ForeColor = Color.White;
+            btnBack.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnBack.Width = 130;
+            btnBack.Height = 50;
+
+            btnBack.Paint += btnNext_Paint;
+            btnBack.MouseEnter += (s, e) => btnBack.BackColor = Color.SteelBlue;
+            btnBack.MouseLeave += (s, e) => btnBack.BackColor = Color.DodgerBlue;
+            btnBack.MouseDown += (s, e) => { btnPressed = true; btnBack.Invalidate(); };
+            btnBack.MouseUp += (s, e) => { btnPressed = false; btnBack.Invalidate(); };
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -103,7 +116,7 @@ namespace Form1
 
             Rectangle rect = btn.ClientRectangle;
 
-            // Change color if button is pressed
+            // Change color when button is pressed
             Color startColor = btnPressed ? Color.FromArgb(53, 122, 189) : Color.FromArgb(74, 144, 226);
             Color endColor = btnPressed ? Color.FromArgb(33, 102, 156) : Color.FromArgb(53, 122, 189);
 
@@ -121,7 +134,7 @@ namespace Form1
                 e.Graphics.FillPath(brush, path);
             }
 
-            // Move text a bit if pressed for 3D effect
+            // move text when pressed
             Point textLocation = new Point(rect.X, rect.Y);
             if (btnPressed)
                 textLocation.Offset(1, 1);
@@ -138,6 +151,46 @@ namespace Form1
         }
 
 
+        private void btnBack_Paint(object sender, PaintEventArgs e)
+        {
+            Button btn = sender as Button;
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+            Rectangle rect = btn.ClientRectangle;
+
+            // Change color when button is pressed
+            Color startColor = btnPressed ? Color.FromArgb(53, 122, 189) : Color.FromArgb(74, 144, 226);
+            Color endColor = btnPressed ? Color.FromArgb(33, 102, 156) : Color.FromArgb(53, 122, 189);
+
+            using (GraphicsPath path = GetRoundedPath(rect, 22))
+            using (LinearGradientBrush brush = new LinearGradientBrush(
+                rect,
+                startColor,
+                endColor,
+                LinearGradientMode.Horizontal))
+            {
+                // Set rounded shape
+                btn.Region = new Region(path);
+
+                // Fill with gradient
+                e.Graphics.FillPath(brush, path);
+            }
+
+            // move text when pressed
+            Point textLocation = new Point(rect.X, rect.Y);
+            if (btnPressed)
+                textLocation.Offset(1, 1);
+
+            // Draw text in center
+            TextRenderer.DrawText(
+                e.Graphics,
+                btn.Text,
+                btn.Font,
+                new Rectangle(textLocation, rect.Size),
+                Color.White,
+                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
+            );
+        }
         private void btnBack_Click(object sender, EventArgs e)
         {
             // go back to user info form
