@@ -323,11 +323,6 @@ namespace Form1
             return path;
         }
 
-        private void lblTimer_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void btnNext_Click(object sender, EventArgs e)
         {
